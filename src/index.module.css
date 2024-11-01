@@ -1,0 +1,30 @@
+:root {
+  /* Coloring (bgColor, color etc) */
+  --color-background: white;
+  --color-text: black;
+  --color-accent: rgb(133, 59, 133);
+  --color-border: rgb(134, 25, 134);
+
+  /* Font sizing */
+  --font-size-base: 16px;
+  --font-size-small: 0.85rem;
+  --font-size-large: 1.25rem;
+
+  /* Spacing (padding, margin etc) */
+  --space-small: 0.5rem;
+  --space-medium: 1rem;
+  --space-large: 2rem;
+
+  /* Borders (padding, margin etc) */
+  --border-radius: 5px;
+  --border-width: 1px;
+
+  /* Box-shadow */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
