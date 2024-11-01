@@ -2,7 +2,7 @@
   /* Coloring (bgColor, color etc) */
   --color-background: white;
   --color-text: black;
-  --color-accent: purple;
+  --color-accent: rgb(133, 59, 133);
   --color-border: rgb(134, 25, 134);
 
   /* Font sizing */
