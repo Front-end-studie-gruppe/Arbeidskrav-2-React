@@ -1,3 +1,7 @@
+//Skal bygges på
+//Next step: Speakers
+//etter det redux
+
 import { useState, useEffect } from "react";
 import { registerAdmin, loginAdmin, checkAdminExists } from "../../api/AuthApi";
 import RegisterForm from "./RegisterForm";
@@ -6,7 +10,7 @@ import modalStyle from "./AuthSwitcher.module.css";
 
 interface AuthSwitcherProps {
   onClose: () => void; 
-  onLogin: (name: string) => void; // Legg til onLogin som en prop
+  onLogin: (name: string) => void; 
 }
 
 const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherProps): JSX.Element => {
@@ -41,9 +45,9 @@ const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherProps): JSX.Element => {
   const handleLogin = async (data: { name: string; password: string }) => {
     try {
       await loginAdmin(data);
-      onLogin(data.name); // Pass the username back to the Header
+      onLogin(data.name); 
       alert("Login successful!");
-      onClose(); // Close the modal after successful login
+      onClose(); 
     } catch (error) {
       const errorMessage = (error as Error).message || "An unexpected error occurred";
       alert(`Login failed: ${errorMessage}`);
