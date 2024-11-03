@@ -1,47 +1,66 @@
-/* Plannlegger hvordan jeg skal Autorisering.
-Skal bygge videre på den med api fetching, andre logikk
- */
-
-
-import { AuthSwitcherTypes } from "../../types/AuthSwitcher.types";
+import { useState, useEffect } from "react";
+import { registerAdmin, loginAdmin, checkAdminExists } from "../../api/AuthApi";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 import modalStyle from "./AuthSwitcher.module.css";
-import { useState } from "react";
 
-const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherTypes): React.ReactNode => {
-  const [isLoginMode, setIsLoginMode] = useState(true);
+interface AuthSwitcherProps {
+  onClose: () => void; 
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isLoginMode) {
-      onLogin();
+const AuthSwitcher = ({ onClose }: AuthSwitcherProps): JSX.Element => {
+  const [isAuthMode, setIsAuthMode] = useState(true); 
+  const [adminExists, setAdminExists] = useState(false);
+
+  useEffect(() => {
+    const fetchAdminStatus = async () => {
+      try {
+        const exists = await checkAdminExists();
+        setAdminExists(exists);
+      } catch (error) {
+        const errorMessage = (error as Error).message || "An unexpected error occurred";
+        console.error("Error fetching admin status:", errorMessage);
+      }
+    };
+
+    fetchAdminStatus();
+  }, []);
+
+  const handleRegister = async (data: { name: string; password: string }) => {
+    try {
+      await registerAdmin(data);
+      alert("Registration successful!");
+      setAdminExists(true);
+    } catch (error) {
+      const errorMessage = (error as Error).message || "An unexpected error occurred";
+      alert(`Registration failed: ${errorMessage}`);
     }
-    onClose();
+  };
+
+  const handleLogin = async (data: { name: string; password: string }) => {
+    try {
+      await loginAdmin(data);
+      alert("Login successful!");
+    } catch (error) {
+      const errorMessage = (error as Error).message || "An unexpected error occurred";
+      alert(`Login failed: ${errorMessage}`);
+    }
   };
 
   return (
     <div className={modalStyle.modalContainer}>
       <div className={modalStyle.modalContent}>
-        <h2>{isLoginMode ? "Log In" : "Register"}</h2>
-        <form onSubmit={handleSubmit}>
-            {/* Test skjema/Skal byttes ut */}
-          <div>
-            <label>Speaker Name</label>
-            <input type="text" id="name" required />
-          </div>
-          <div>
-            <label>Email</label>
-            <input type="text" id="email" required />
-          </div>
-          <div>
-            <label>Password</label>
-            <input type="password" id="password" required />
-          </div>
-          <button type="submit">{isLoginMode ? "Log In" : "Register"}</button>
-        </form>
+        <h2>{isAuthMode ? "Login" : "Register"}</h2>
+        {!isAuthMode && adminExists && <p>An admin account already exists.</p>}
+        {isAuthMode ? (
+          <LoginForm onLogin={handleLogin} />
+        ) : (
+          <RegisterForm onRegister={handleRegister} />
+        )}
         <p>
-          {isLoginMode ? "Don't have an account?" : "Already registered?"}{" "}
-          <button type="button" onClick={() => setIsLoginMode(!isLoginMode)}>
-            {isLoginMode ? "Go to Registration" : "Go to Log In"}
+          {isAuthMode ? "Don't have an account?" : "Already registered?"}{" "}
+          <button type="button" onClick={() => setIsAuthMode(!isAuthMode)}>
+            {isAuthMode ? "Go to Registration" : "Go to Log In"}
           </button>
         </p>
         <button className={modalStyle.close} onClick={onClose}>Close</button>
@@ -51,6 +70,21 @@ const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherTypes): React.ReactNode 
 };
 
 export default AuthSwitcher;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

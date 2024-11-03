@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/javazone-logo.jpg";
 import headerStyle from "./Header.module.css";
-import AuthSwitcher from "../Auth/AuthSwitcher";
+import AuthSwitcher from "../auth/AuthSwitcher";
 
 const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);

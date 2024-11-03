@@ -1,9 +1,16 @@
+export interface User {
+  id: number;
+  username: string; 
+  name: string; 
+  role: string; 
+  password: string;
+  email: string; 
+}
+
 export interface Speaker {
   id: number;
   name: string;
   bio: string;
-  email: string;
-  password: any;
 }
 
 export interface room {
