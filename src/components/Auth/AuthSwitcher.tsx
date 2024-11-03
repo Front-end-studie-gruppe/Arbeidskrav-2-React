@@ -6,9 +6,10 @@ import modalStyle from "./AuthSwitcher.module.css";
 
 interface AuthSwitcherProps {
   onClose: () => void; 
+  onLogin: (name: string) => void; // Legg til onLogin som en prop
 }
 
-const AuthSwitcher = ({ onClose }: AuthSwitcherProps): JSX.Element => {
+const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherProps): JSX.Element => {
   const [isAuthMode, setIsAuthMode] = useState(true); 
   const [adminExists, setAdminExists] = useState(false);
 
@@ -40,7 +41,9 @@ const AuthSwitcher = ({ onClose }: AuthSwitcherProps): JSX.Element => {
   const handleLogin = async (data: { name: string; password: string }) => {
     try {
       await loginAdmin(data);
+      onLogin(data.name); // Pass the username back to the Header
       alert("Login successful!");
+      onClose(); // Close the modal after successful login
     } catch (error) {
       const errorMessage = (error as Error).message || "An unexpected error occurred";
       alert(`Login failed: ${errorMessage}`);

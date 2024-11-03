@@ -1,8 +1,6 @@
 const API_KEY_Admin = import.meta.env.VITE_API_KEY_Admin;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-
-
 const adminHeaders: HeadersInit = {
   "Content-Type": "application/json",
   "Authorization": `Bearer ${API_KEY_Admin}`,
