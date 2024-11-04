@@ -8,6 +8,9 @@ const useAdminLogic = (
   onSpeakerAdded: (Speaker: Speaker) => void,
   onRoomAdded: (room: room) => void
 ) => {
+  const [formType, setFormType] = useState<"talks" | "speakers" | "rooms">(
+    "talks"
+  );
   const [talkData, setTalkData] = useState({
     title: "",
     speakerId: 0,
@@ -19,64 +22,67 @@ const useAdminLogic = (
   const [roomData, setRoomData] = useState({ name: "" });
 
   // Adding function to change value of event for different requests
-  const handleTalkChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setTalkData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleRoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setTalkData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSpeakerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setTalkData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleAddTalk = async () => {
-    try {
-      const newTalk = await addTalks(
-        talkData.title,
-        talkData.speakerId,
-        talkData.roomId,
-        talkData.startTime,
-        talkData.endTime
-      );
-      onTalkAdded(newTalk);
-    } catch (error) {
-      console.log("Could not add talk", error);
+    switch (formType) {
+      case "talks":
+        setTalkData((prev) => ({ ...prev, [name]: value }));
+        break;
+      case "speakers":
+        setSpeakerData((prev) => ({ ...prev, [name]: value }));
+        break;
+      case "rooms":
+        setRoomData((prev) => ({ ...prev, [name]: value }));
+        break;
     }
   };
 
-  const handleAddRoom = async () => {
+  const handleAdd = async () => {
     try {
-      const newRoom = await addRoom(roomData.name);
-      onRoomAdded(newRoom);
-    } catch (error) {
-      console.log("Could not add room", error);
-    }
-  };
+      switch (formType) {
+        case "talks":
+          const newTalk = await addTalks(
+            talkData.title,
+            talkData.speakerId,
+            talkData.roomId,
+            talkData.startTime,
+            talkData.endTime
+          );
+          onTalkAdded(newTalk);
 
-  const handleAddSpeaker = async () => {
-    try {
-      const newSpeaker = await addSpeaker(speakerData.name, speakerData.bio);
-      onSpeakerAdded(newSpeaker);
+          // Set back to initial state values
+          setTalkData({
+            title: "",
+            speakerId: 0,
+            roomId: 0,
+            startTime: "",
+            endTime: "",
+          });
+        case "speakers":
+          const newSpeaker = await addSpeaker(
+            speakerData.name,
+            speakerData.bio
+          );
+          onSpeakerAdded(newSpeaker);
+          setSpeakerData({ name: "", bio: "" });
+        case "rooms":
+          const newRoom = await addRoom(roomData.name);
+          onRoomAdded(newRoom);
+          setRoomData({ name: "" });
+      }
     } catch (error) {
-      console.log("Could not add speaker", error);
+      console.log("Error adding", error);
     }
   };
   return {
+    formType,
     talkData,
     speakerData,
     roomData,
 
-    handleAddTalk,
-    handleAddSpeaker,
-    handleAddRoom,
-    handleTalkChange,
-    handleSpeakerChange,
-    handleRoomChange,
+    handleAdd,
+    handleInputChange,
+    setFormType,
   };
 };
 
