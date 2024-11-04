@@ -7,7 +7,7 @@ import {
   faTwitter,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-import Logo from "../../assets/React.svg";
+import Logo from "../../assets/javazone-logo.jpg";
 import "./Footer.css";
 
 const Footer = () => {
