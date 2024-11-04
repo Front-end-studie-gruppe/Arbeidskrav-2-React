@@ -6,7 +6,7 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import Logo from "../../assets/javazone-logo.jpg";
-import "./Footer.css";
+import "./Footer.css"; 
 
 const Footer = () => {
   return (
