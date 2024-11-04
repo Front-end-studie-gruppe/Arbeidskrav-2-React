@@ -62,7 +62,7 @@ const Header = () => {
                   <p onClick={toggleDropdown} style={{ cursor: 'pointer' }}>{username}</p>
                   {isDropdownOpen && (
                     <div ref={dropdownRef} className={headerStyle.dropdown}>
-                      <Link to="/my-page" onClick={() => setDropdownOpen(false)}>My Page</Link>
+                      <Link to="/mypage" onClick={() => setDropdownOpen(false)}>My Page</Link>
                       <button onClick={handleLogout}>Log out</button>
                     </div>
                   )}

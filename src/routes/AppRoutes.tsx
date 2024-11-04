@@ -1,6 +1,7 @@
 import Home from "../pages/Home";
 import Program from "../pages/Program";
 import Contact from "../pages/Contact";
+import MyPage from "../pages/MyPage"
 import { Route, Routes } from "react-router-dom";
 
 const App_routes = () => {
@@ -10,6 +11,7 @@ const App_routes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/program" element={<Program />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </>
   );
