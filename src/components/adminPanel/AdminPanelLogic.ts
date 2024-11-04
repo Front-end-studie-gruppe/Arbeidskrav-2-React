@@ -8,9 +8,7 @@ const useAdminLogic = (
   onSpeakerAdded: (Speaker: Speaker) => void,
   onRoomAdded: (room: room) => void
 ) => {
-  const [formType, setFormType] = useState<"talks" | "speakers" | "rooms">(
-    "talks"
-  );
+  const [formType, setFormType] = useState<"talks" | "speakers" | "rooms">("talks");
   const [talkData, setTalkData] = useState({
     title: "",
     speakerId: 0,
@@ -59,12 +57,10 @@ const useAdminLogic = (
             endTime: "",
           });
         case "speakers":
-          const newSpeaker = await addSpeaker(
-            speakerData.name,
-            speakerData.bio
-          );
+          const newSpeaker = await addSpeaker(speakerData.name, speakerData.bio);
           onSpeakerAdded(newSpeaker);
           setSpeakerData({ name: "", bio: "" });
+          break;
         case "rooms":
           const newRoom = await addRoom(roomData.name);
           onRoomAdded(newRoom);
