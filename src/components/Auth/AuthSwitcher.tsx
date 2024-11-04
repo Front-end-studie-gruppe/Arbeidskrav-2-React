@@ -1,19 +1,15 @@
-//Skal bygges på
-//Next step: Speakers
-//etter det redux
-
 import { useState, useEffect } from "react";
 import { registerAdmin, loginAdmin, checkAdminExists } from "../../api/AuthApi";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import modalStyle from "./AuthSwitcher.module.css";
+import { login } from "../../redux/authSlice";
 
 interface AuthSwitcherProps {
   onClose: () => void; 
-  onLogin: (name: string) => void; 
 }
 
-const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherProps): JSX.Element => {
+const AuthSwitcher = ({ onClose }: AuthSwitcherProps): JSX.Element => {
   const [isAuthMode, setIsAuthMode] = useState(true); 
   const [adminExists, setAdminExists] = useState(false);
 
@@ -45,7 +41,7 @@ const AuthSwitcher = ({ onClose, onLogin }: AuthSwitcherProps): JSX.Element => {
   const handleLogin = async (data: { name: string; password: string }) => {
     try {
       await loginAdmin(data);
-      onLogin(data.name); 
+      dispatch(login({ username, role, token }));
       alert("Login successful!");
       onClose(); 
     } catch (error) {

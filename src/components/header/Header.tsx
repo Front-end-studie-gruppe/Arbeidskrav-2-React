@@ -3,25 +3,25 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/javazone-logo.jpg";
 import headerStyle from "./Header.module.css";
 import globalStyle from "../../index.module.css";
-import AuthSwitcher from "../Auth/AuthSwitcher";
+import AuthSwitcher from "../auth/AuthSwitcher";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/reduxStore";
+import { logout } from "../../redux/authSlice";
 
 const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [username, setUsername] = useState<string | null>(null);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const dispatch = useDispatch();
+
+  const username = useSelector((state: RootState) => state.auth.username); 
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
 
-  const handleLogin = (name: string) => {
-    setUsername(name);
-    console.log("User has logged in");
-  };
-
   const handleLogout = () => {
-    setUsername(null);
+    dispatch(logout()); 
     setDropdownOpen(false);
   };
 
@@ -29,7 +29,6 @@ const Header = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
-  // lukke dropdown når du klikker utenfor den
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -89,7 +88,7 @@ const Header = () => {
         </nav>
       </header>
       {isModalOpen && (
-        <AuthSwitcher onClose={toggleModal} onLogin={handleLogin} />
+        <AuthSwitcher onClose={toggleModal} />
       )}
     </>
   );
