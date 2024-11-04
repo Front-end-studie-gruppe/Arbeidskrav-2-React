@@ -1,10 +1,10 @@
 export interface User {
   id: number;
-  username: string; 
-  name: string; 
-  role: string; 
+  username: string;
+  name: string;
+  role: string;
   password: string;
-  email: string; 
+  email: string;
 }
 
 export interface Speaker {
@@ -26,4 +26,10 @@ export interface talk {
   title: string;
   startTime: string;
   endTime: string;
+}
+
+export interface AdminPanelProps {
+  onTalkAdded: (talk: talk) => void;
+  onSpeakerAdded: (speaker: Speaker) => void;
+  onRoomAdded: (room: room) => void;
 }
