@@ -1,0 +1,71 @@
+.contact {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.contact-info {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.contact-info h2 {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+  margin: 0.25rem 0;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Økt høyde for textarea */
+.contact-form textarea {
+  height: 150px; /* Øker høyden på tekstområdet */
+}
+
+.contact-form button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+
