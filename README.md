@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+Autorisering:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ikke-autorisert brukere har tilgang til alle kortene med data fra API-et i programmet, som inkluderer navnet på foredragsholderen, tittel på foredraget, romnavn og tid (dato og klokkeslett). 
+Når de velger et kort og klikker på det, blir de tatt til detaljsiden for det valgte kortet, hvor de kan se all data fra GET-forespørslene til 
+/api/speakers/,
+ /api/talks/
+, og /api/rooms/
 
-Currently, two official plugins are available:
+Brukere som foredragsholdere: Disse brukerne har et eget panel som gjelder deres foredrag, der de kan legge til, oppdatere og slette informasjon. 
+Alt de gjør i panelet oppdateres på kortene, og de har også tilgang til sine egne kort. De kan også se alle andre foredragsholdere, foredrag og rom.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Admin: 
+Admin har et eget panel med alle rettigheter, inkludert muligheten til å legge til, oppdatere eller slette data og foredragsholdere. Det kan bare registreres én administrator. 
+Når en administrator registreres, skjules valg av rolle i registreringsprosessen. Når siden lastes, sendes en GET-forespørsel til https://crudapi.co.uk/ der administratorbrukeren er opprettet. 
+Hvis det finnes en administrator der, skjules hele brukerens rolle, enten det er admin eller foredragsholder. Hvis ikke, forblir rollen synlig under registreringen.
 
-## Expanding the ESLint configuration
+Sideoppbygging: 
+Logo | Hjem | Program | Kontakt | Logg inn/Registrer
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Hjem: 
+Eksempel: 
 
-- Configure the top-level `parserOptions` property like this:
+Konferanse: [Datoer for konferansen]
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Workshops: [Dato for workshops] Påmelding åpner [dato]. 
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Spesielle arrangementer:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Program: 
+Har kortene for hvert arrangement med data fra API-et, som inkluderer navnet på foredragsholderen, tittel på foredraget, romnavn og tid (dato og klokkeslett). 
+Når de velger et kort og klikker på det, blir de tatt til detaljsiden for det valgte kortet, hvor de kan se all data fra GET-forespørslene til 
+/api/speakers/, 
+/api/talks/,
+/api/rooms/
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+På detaljsiden kan besøkende som skal på konferansen melde seg på ved å klikke på "Meld deg på denne konferansen." 
+Når de klikker på knappen for påmelding, dukker det opp en modalvindu med feltene for navn, etternavn og e-post. 
+Etter å ha fylt ut skjemaet, klikker de på "Send." 
+Dette skjemaet skal også lagres på https://crudapi.co.uk/, sammen med navnet på foredragsholderen, tittel på foredraget, romnavn og tid (dato og klokkeslett).
+
+Kontakt: 
+En enkel kontaktside.
