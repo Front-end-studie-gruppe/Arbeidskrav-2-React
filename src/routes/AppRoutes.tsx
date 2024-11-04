@@ -1,7 +1,7 @@
 import Home from "../pages/homePage/Home";
 import Program from "../pages/program/Program";
 import Contact from "../pages/Contact";
-import MyPage from "../pages/MyPage";
+import MyPage from "../pages/myPage/MyPage";
 import { Route, Routes } from "react-router-dom";
 
 const App_routes = () => {
