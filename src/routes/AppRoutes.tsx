@@ -1,6 +1,6 @@
 import Program from "../pages/program/Program";
 import Contact from "../pages/Contact";
-import MyPage from "../pages/MyPage";
+import MyPage from "../pages/myPage/MyPage";
 import { Route, Routes } from "react-router-dom";
 import AdminRigthsSecure from "./AdminRigthsSecure";
 import Home from "../pages/homePage/Home";
