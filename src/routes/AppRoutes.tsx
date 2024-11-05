@@ -1,9 +1,9 @@
-import Home from "../pages/homePage/Home";
 import Program from "../pages/program/Program";
 import Contact from "../pages/Contact";
 import MyPage from "../pages/MyPage";
 import { Route, Routes } from "react-router-dom";
 import AdminRigthsSecure from "./AdminRigthsSecure";
+import Home from "../pages/homePage/Home";
 
 const AppRoutes = () => {
   return (
