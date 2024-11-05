@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { addTalks, addRoom, addSpeaker } from "../../api/postRequests";
-import { Speaker, room, talk } from "../../types/types";
+import { addTalks, addRoom, addSpeaker } from "../../../api/postRequests";
+import { Speaker, room, talk } from "../../../types/types";
 
 // Adding useStates for logic
 const useAdminLogic = (
