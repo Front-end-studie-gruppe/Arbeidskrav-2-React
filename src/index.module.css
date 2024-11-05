@@ -2,7 +2,7 @@
   /* Coloring (bgColor, color etc) */
   --color-background: white;
   --color-text: black;
-  --color-accent: purple;
+  --color-accent: rgb(133, 59, 133);
   --color-border: rgb(134, 25, 134);
 
   /* Font sizing */
@@ -20,7 +20,7 @@
   --border-width: 1px;
 
   /* Box-shadow */
-  --box-shadow: 0 4px 8px rgba;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 * {
