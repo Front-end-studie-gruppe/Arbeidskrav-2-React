@@ -56,6 +56,7 @@ const useAdminLogic = (
             startTime: "",
             endTime: "",
           });
+          break;
         case "speakers":
           const newSpeaker = await addSpeaker(speakerData.name, speakerData.bio);
           onSpeakerAdded(newSpeaker);

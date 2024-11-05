@@ -92,7 +92,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onTalkAdded, onSpeakerAdded, on
               value={roomData.name}
               onChange={handleInputChange}
             ></input>
-            <button type="submit">Add speaker</button>
+            <button type="submit">Add room</button>
           </>
         )}
       </form>
