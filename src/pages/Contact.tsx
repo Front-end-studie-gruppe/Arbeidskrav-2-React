@@ -1,43 +1,113 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import "./Contact.css";
 
-interface Talk {
-  id: string;
-  title: string;
-  description: string;
-  speaker: string;
-}
+const Contact: React.FC = () => {
+  const [name, setName] = useState<string>("");
+  const [surname, setSurname] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
-const InfoPage: React.FC = () => {
-  const { talkId } = useParams<{ talkId: string }>();
-  const [talk, setTalk] = useState<Talk | null>(null);
-  const [showMore, setShowMore] = useState<boolean>(false);
+  const submitToAPI = async () => {
+    try {
+      const response = await fetch("https://crudapi.co.uk/api/v1", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          surname,
+          email,
+          message,
+        }),
+      });
 
-  useEffect(() => {
-    fetch(`/api/talks/${talkId}`)
-      .then((response) => response.json())
-      .then((data) => setTalk(data))
-      .catch((error) => console.error("Error fetching talk details:", error));
-  }, [talkId]);
+      if (response.ok) {
+        console.log("Message sent to API");
+        setSubmitted(true);
+        setName("");
+        setSurname("");
+        setEmail("");
+        setMessage("");
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
 
-  if (!talk) {
-    return <p>Loading...</p>;
-  }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name && surname && email && message) {
+      submitToAPI();
+    } else {
+      alert("Please fill in all fields.");
+    }
+  };
 
   return (
-    <div>
-      <h1>{talk.title}</h1>
-      <p>Speaker: {talk.speaker}</p>
-      <p>
-        {showMore
-          ? talk.description
-          : `${talk.description.substring(0, 100)}...`}
-      </p>
-      <button onClick={() => setShowMore(!showMore)}>
-        {showMore ? "Vis mindre" : "Les mer"}
-      </button>
+    <div className="contact">
+      <div className="contact-info">
+        <h2>Contact Information</h2>
+        <p>Address: Storgata 1, Oslo</p>
+        <p>Phone: +47 40506070</p>
+        <p>
+          Email: <a href="mailto:info@javazone.no">info@javazone.no</a>
+        </p>
+      </div>
+      {submitted ? (
+        <p className="thank-you">
+          Thank you for reaching out! We'll get back to you soon.
+        </p>
+      ) : (
+        <form onSubmit={handleSubmit} className="contact-form">
+          <label>
+            Name:
+            <input
+              placeholder="Name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Surname:
+            <input
+              placeholder="Surname"
+              type="text"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Email:
+            <input
+              placeholder="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Message:
+            <textarea
+              placeholder="Your text message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            />
+          </label>
+          <button type="submit">Send Message</button>
+        </form>
+      )}
     </div>
   );
 };
 
-export default InfoPage;
+export default Contact;
