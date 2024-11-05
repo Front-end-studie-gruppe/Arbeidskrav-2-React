@@ -65,12 +65,12 @@ export const getAdmin = async (name: string): Promise<AdminResponse> => {
 };
 
 // logger inn
-export const loginAdmin = async (adminData: AdminData): Promise<{ username: string; role: string; token: string }> => {
+export const loginAdmin = async (adminData: AdminData): Promise<{ username: string; role: string;}> => {
   const admin = await getAdmin(adminData.name);
 
   if (admin && admin.password === adminData.password) {
-    return { username: admin.name, role: admin.role, token: API_KEY_Admin }; 
+    return { username: admin.name, role: admin.role }; 
   } else {
-    throw new Error("Invalid credentials"); 
+    throw new Error("Invalid credentials");
   }
 };

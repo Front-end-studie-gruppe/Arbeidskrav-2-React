@@ -21,11 +21,5 @@ export interface AdminData {
   export interface AuthState {
     username: string | null; 
     role: string | null;      
-    token: string | null;    
   }
 
-  export interface DecodedToken {
-    username: string; 
-    role: string;     
-    exp: number;      
-  }

@@ -7,6 +7,7 @@ import AuthSwitcher from "../auth/AuthSwitcher";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reduxStore";
 import { logout } from "../../redux/authSlice";
+import cookie from "js-cookie"; // Importer js-cookie
 
 const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -21,6 +22,11 @@ const Header = () => {
   };
 
   const handleLogout = () => {
+    
+    cookie.remove("username");
+    cookie.remove("role");
+
+   
     dispatch(logout()); 
     setDropdownOpen(false);
   };
