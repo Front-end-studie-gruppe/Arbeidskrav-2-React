@@ -57,7 +57,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-  resize: vertical; /* Tillater vertikal endring av størrelse for textarea */
+  resize: vertical; 
 }
 
 .contact-form textarea {
