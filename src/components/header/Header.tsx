@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/javazone-logo.jpg";
 import headerStyle from "./Header.module.css";
 import globalStyle from "../../index.module.css";
@@ -7,13 +7,14 @@ import AuthSwitcher from "../auth/AuthSwitcher";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reduxStore";
 import { logout } from "../../redux/authSlice";
-import cookie from "js-cookie"; // Importer js-cookie
+import cookie from "js-cookie"; 
 
 const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const username = useSelector((state: RootState) => state.auth.username); 
 
@@ -25,10 +26,9 @@ const Header = () => {
     
     cookie.remove("username");
     cookie.remove("role");
-
-   
     dispatch(logout()); 
     setDropdownOpen(false);
+    navigate("/");
   };
 
   const toggleDropdown = () => {
