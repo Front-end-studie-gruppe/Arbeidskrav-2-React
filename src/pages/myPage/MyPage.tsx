@@ -1,25 +1,20 @@
-import AdminPanel from "../../components/adminPanel/adminPanel";
-import { room, Speaker, talk } from "../../types/types";
+import AdminPanel from "../../components/adminPanel/AdminPanel";
 import myPageStyle from "./MyPage.module.css";
 
 const MyPage = () => {
-  const handleAddedTalk = (talk: talk) => {
-    alert({ Message: "Successfully added talk", Value: talk });
+  const handleAddedTalk = () => {
+    alert("Successfully added room");
   };
-  const handleAddedSpeaker = (speaker: Speaker) => {
-    alert({ Message: "Successfully added talk", Value: speaker });
+  const handleAddedSpeaker = () => {
+    alert("Successfully added speaker");
   };
-  const handleAddedRoom = (room: room) => {
-    alert({ Message: "Successfully added talk", Value: room });
+  const handleAddedRoom = () => {
+    alert("Sucessfully added room");
   };
   return (
     <div className={myPageStyle.container}>
       <h1>My Page (Admin)</h1>
-      <AdminPanel
-        onTalkAdded={handleAddedTalk}
-        onSpeakerAdded={handleAddedSpeaker}
-        onRoomAdded={handleAddedRoom}
-      />
+      <AdminPanel onTalkAdded={handleAddedTalk} onSpeakerAdded={handleAddedSpeaker} onRoomAdded={handleAddedRoom} />
     </div>
   );
 };
