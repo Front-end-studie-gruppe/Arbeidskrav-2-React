@@ -6,15 +6,14 @@ interface Talk {
   title: string;
   description: string;
   speaker: string;
- 
 }
 
 const InfoPage: React.FC = () => {
   const { talkId } = useParams<{ talkId: string }>();
   const [talk, setTalk] = useState<Talk | null>(null);
+  const [showMore, setShowMore] = useState<boolean>(false);
 
   useEffect(() => {
-   
     fetch(`/api/talks/${talkId}`)
       .then((response) => response.json())
       .then((data) => setTalk(data))
@@ -29,8 +28,15 @@ const InfoPage: React.FC = () => {
     <div>
       <h1>{talk.title}</h1>
       <p>Speaker: {talk.speaker}</p>
-      <p>{talk.description}</p>
-     </div>
+      <p>
+        {showMore
+          ? talk.description
+          : `${talk.description.substring(0, 100)}...`}
+      </p>
+      <button onClick={() => setShowMore(!showMore)}>
+        {showMore ? "Show less" : "Show more"}
+      </button>
+    </div>
   );
 };
 
