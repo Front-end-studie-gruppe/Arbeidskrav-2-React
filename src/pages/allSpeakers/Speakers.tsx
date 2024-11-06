@@ -31,7 +31,7 @@ const Speakers = () => {
       </div>
       <section>
          {speakers.length === 0 ? (
-            <p>There is no speakers avaible</p>
+            <p>There is no speakers avaliable</p>
           ) : (
             <ul>
               {speakers.map((name, index) => (
