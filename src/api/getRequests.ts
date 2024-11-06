@@ -22,4 +22,6 @@ export const getSpeakers = async (): Promise<Speaker[]> => {
     const data = await response.json();
     return data.items; 
   };
+
+  
   
