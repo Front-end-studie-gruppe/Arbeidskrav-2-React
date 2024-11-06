@@ -9,12 +9,12 @@ const AdminRigthsSecure = ({ children }: AdminRigthsSecureProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!username || role !== "admin") {
+    if (!(username && role === "admin")) {
       navigate("/", { replace: true });
     }
   }, [username, role, navigate]);
 
-  if (!username || role !== "admin") {
+  if (!(username && role === "admin")) {
     return null; 
   }
 
