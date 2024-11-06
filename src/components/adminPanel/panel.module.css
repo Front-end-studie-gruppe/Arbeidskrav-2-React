@@ -1,5 +1,9 @@
 .container {
   display: flex;
   margin-left: 1rem;
-  gap: 2rem;
+  gap: 4rem;
+}
+
+h1 {
+  margin-top: 1.5rem;
 }
