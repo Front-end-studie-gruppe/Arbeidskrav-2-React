@@ -1,4 +1,4 @@
-import { Speaker, talk } from "../types/types";
+import { room, Speaker, talk } from "../types/types";
 
 const getInfo = import.meta.env.VITE_API_KEY_SPEAKER;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -39,6 +39,21 @@ export const getSpeakers = async (): Promise<Speaker[]> => {
     return data.items; 
   };
 
+  export const getRooms = async (): Promise<room[]> => {
+    const response = await fetch(`${BASE_URL}/rooms`, {
+      method: "GET",
+      headers: getHeaders,
+    });
+  
+    if (!response.ok) {
+      console.error("Failed to fetch rooms");
+      
+      throw new Error("Could not fetch rooms");
+    }
+  
+    const data = await response.json();
+    return data.items; 
+  };
 
 
 export const getSpeakerDetails = async (uuid: string): Promise<Speaker> => {
@@ -68,3 +83,4 @@ export const getTalkDetails = async (uuid: string): Promise<talk> => {
 
   return await response.json();
 };
+

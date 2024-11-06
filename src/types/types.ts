@@ -5,7 +5,7 @@ export interface Speaker {
 }
 
 export interface room {
-  id: number;
+  _uuid: string;
   name: string;
   capacity: string;
 }
