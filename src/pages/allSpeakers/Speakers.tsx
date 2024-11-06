@@ -56,7 +56,8 @@ const Speakers = () => {
             {speakers.map((speaker) => (
               <li
                 key={speaker._uuid}
-                onClick={() => clickHandler(speaker._uuid)}
+                onClick={() => clickHandler(speaker._uuid)
+                }
               >
                 <h3>{speaker.name}</h3>
               </li>
@@ -71,7 +72,7 @@ const Speakers = () => {
             <h2>Speaker Details</h2>
             <div>
               <h3>{selectedSpeaker.name}</h3>
-              <p><strong>Bio:</strong> {selectedSpeaker.bio}</p>
+              <p>Bio: {selectedSpeaker.bio}</p>
             </div>
             <button
               onClick={closeModal}>

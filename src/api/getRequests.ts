@@ -55,3 +55,16 @@ export const getSpeakerDetails = async (uuid: string): Promise<Speaker> => {
   return await response.json();
 };
 
+export const getTalkDetails = async (uuid: string): Promise<talk> => {
+  const response = await fetch(`${BASE_URL}/talks/${uuid}`, {
+    method: "GET",
+    headers: getHeaders,
+  });
+
+  if (!response.ok) {
+    console.error("Failed to fetch talk details");
+    throw new Error("Could not get talks infomation");  
+  }
+
+  return await response.json();
+};
