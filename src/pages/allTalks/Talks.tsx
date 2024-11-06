@@ -5,16 +5,27 @@ import { talk } from "../../types/types"
 
 const Talks = () => {
   const [talks, setTalks] = useState<talk[]>([]);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+
     const fetchTalks = async () => {
-      const dataTalks = await getTalks();
-      console.log("Fetched talks:", dataTalks);
-      setTalks(dataTalks);
+      try {
+        const dataTalks = await getTalks();
+        console.log("Fetched talks:", dataTalks);
+        setTalks(dataTalks);
+      } catch (error) {
+        console.error("Error fetching talks:", error);
+      }
+      setIsLoading(false);
     };
 
     fetchTalks();
   }, []);
+
+  if (isLoading) {
+    return <div>Loading speakers...</div>;
+  }
 
   return (
     <>
