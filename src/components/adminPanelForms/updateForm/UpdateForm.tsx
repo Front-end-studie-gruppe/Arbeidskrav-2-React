@@ -44,6 +44,43 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
                 </option>
               ))}
             </select>
+            <input
+              type="text"
+              name="title"
+              placeholder="Talk Title"
+              value={talkData.title}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              type="number"
+              name="speakerId"
+              placeholder="Speaker ID"
+              value={talkData.speakerId}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              type="number"
+              name="roomId"
+              placeholder="Room ID"
+              value={talkData.roomId}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              type="text"
+              name="startTime"
+              placeholder="Start time"
+              value={talkData.startTime}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              type="text"
+              name="endTime"
+              placeholder="End time"
+              value={talkData.endTime}
+              onChange={handleInputChange}
+            ></input>
+            <button>Update talk</button>
+            <button>Delete talk</button>
           </>
         )}
         {formType === "speakers" && (
@@ -57,6 +94,22 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
                 </option>
               ))}
             </select>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              value={speakerData.name}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              type="text"
+              name="bio"
+              placeholder="Write about yourself"
+              value={speakerData.bio}
+              onChange={handleInputChange}
+            ></input>
+            <button>Update speaker</button>
+            <button>Delete speaker</button>
           </>
         )}
         {formType === "rooms" && (
@@ -70,6 +123,15 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
                 </option>
               ))}
             </select>
+            <input
+              type="text"
+              name="name"
+              placeholder="Room name"
+              value={roomData.name}
+              onChange={handleInputChange}
+            ></input>
+            <button>Update speaker</button>
+            <button>Delete speaker</button>
           </>
         )}
       </form>
