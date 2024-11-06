@@ -38,7 +38,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
         {formType === "talks" && (
           <>
           <h2>Update existing talk</h2>
-            <select value={usedId || ""}onChange={handleSelectChange}>
+            <select onChange={handleSelectChange}>
               <option value="">Select talk</option>
               {talkOptions.map((talk) => (
                 <option key={talk.id} value={talk.id}>

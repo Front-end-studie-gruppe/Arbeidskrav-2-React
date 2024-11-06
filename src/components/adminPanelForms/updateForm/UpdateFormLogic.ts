@@ -57,19 +57,16 @@ const useAdminLogic = (
   }, [formType]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const id = parseInt(e.target.value, 10);
-    if(isNaN(id)) {
-      console.log("Invalid id")
-      return
-    }
+    const id = parseInt(e.target.value);
     setUsedId(id);
-    console.log("Selected ID: ", id); // Debugging log
 
     switch (formType) {
       case "talks":
-        const selectedTalk = talkOptions.find((talk) => talk.id === usedId);
-        console.log("Talk Options: ", talkOptions);  // Debugging log
-        console.log("Selected Talk: ", selectedTalk);
+        const selectedTalk = talkOptions.find((talk) => talk.id === id);
+        console.log("State of all in array", talkOptions);
+        console.log("State of single data", talkData)
+        console.log(selectedTalk);
+        
         if (selectedTalk) {
           setTalkData({
             id: selectedTalk.id,

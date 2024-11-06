@@ -27,7 +27,7 @@ export const getSpeakers = async (): Promise<ArrayResponse> => {
 };
 
 export const getSpeakerDetails = async (id: number): Promise<ArrayResponse> => {
-  const response = await fetch(`${BASE_URL}/speakers${id}`, {
+  const response = await fetch(`${BASE_URL}/speakers/${id}`, {
     method: "GET",
     headers: postHeaders,
   });
@@ -53,7 +53,7 @@ export const getTalks = async (): Promise<ArrayResponse> => {
 };
 
 export const getTalkDetails = async (id: number): Promise<ArrayResponse> => {
-  const response = await fetch(`${BASE_URL}/talks${id}`, {
+  const response = await fetch(`${BASE_URL}/talks/${id}`, {
     method: "GET",
     headers: postHeaders,
   });
@@ -79,7 +79,7 @@ export const getRooms = async (): Promise<ArrayResponse> => {
 };
 
 export const getRoomDetails = async (id: number): Promise<ArrayResponse> => {
-  const response = await fetch(`${BASE_URL}/rooms${id}`, {
+  const response = await fetch(`${BASE_URL}/rooms/${id}`, {
     method: "GET",
     headers: postHeaders,
   });
