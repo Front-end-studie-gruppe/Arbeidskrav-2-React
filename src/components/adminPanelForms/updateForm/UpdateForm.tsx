@@ -36,7 +36,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
         {formType === "talks" && (
           <>
             <select onChange={handleSelectChange}>
-              <option value="">Select speaker</option>
+              <option value="">Select talk</option>
               {talkOptions.map((talk) => (
                 <option key={talk.id} value={talk.id}>
                   {talk.title}
@@ -47,33 +47,26 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
         )}
         {formType === "speakers" && (
           <>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name"
-              value={speakerData.name}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              type="text"
-              name="bio"
-              placeholder="Write about yourself"
-              value={speakerData.bio}
-              onChange={handleInputChange}
-            ></input>
-            <button type="submit">Add speaker</button>
+            <select onChange={handleSelectChange}>
+              <option value="">Select speaker</option>
+              {speakerOptions.map((speaker) => (
+                <option key={speaker.id} value={speaker.id}>
+                  {speaker.name}
+                </option>
+              ))}
+            </select>
           </>
         )}
         {formType === "rooms" && (
           <>
-            <input
-              type="text"
-              name="name"
-              placeholder="Room name"
-              value={roomData.name}
-              onChange={handleInputChange}
-            ></input>
-            <button type="submit">Add room</button>
+            <select onChange={handleSelectChange}>
+              <option value="">Select room</option>
+              {roomOptions.map((room) => (
+                <option key={room.id} value={room.id}>
+                  {room.name}
+                </option>
+              ))}
+            </select>
           </>
         )}
       </form>

@@ -27,7 +27,7 @@ const useAdminLogic = (
   const [speakerData, setSpeakerData] = useState({ id: 0, name: "", bio: "" });
   const [roomData, setRoomData] = useState({ id: 0, name: "" });
 
-  const [talkOptions, setTalkOptions] = useState<talk[] | []>([]);
+  const [talkOptions, setTalkOptions] = useState<talk[]>([]);
   const [speakerOptions, setSpeakerOptions] = useState<Speaker[]>([]);
   const [roomOptions, setRoomOptions] = useState<room[]>([]);
 
