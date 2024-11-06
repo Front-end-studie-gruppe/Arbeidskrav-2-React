@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Speaker, room, talk } from "../../../types/types";
+import { Speaker, Room, Talk } from "../../../types/types";
 import {
   getRooms,
   getSpeakers,
@@ -11,9 +11,9 @@ import {
 
 // Adding useStates for logic
 const useAdminLogic = (
-  onTalkUpdated: (talk: talk) => void,
+  onTalkUpdated: (talk: Talk) => void,
   onSpeakerUpdated: (Speaker: Speaker) => void,
-  onRoomUpdated: (room: room) => void
+  onRoomUpdated: (room: Room) => void
 ) => {
   const [formType, setFormType] = useState<"talks" | "speakers" | "rooms">("talks");
   const [talkData, setTalkData] = useState({
@@ -27,9 +27,9 @@ const useAdminLogic = (
   const [speakerData, setSpeakerData] = useState({ id: 0, name: "", bio: "" });
   const [roomData, setRoomData] = useState({ id: 0, name: "" });
 
-  const [talkOptions, setTalkOptions] = useState<talk[]>([]);
+  const [talkOptions, setTalkOptions] = useState<Talk[]>([]);
   const [speakerOptions, setSpeakerOptions] = useState<Speaker[]>([]);
-  const [roomOptions, setRoomOptions] = useState<room[]>([]);
+  const [roomOptions, setRoomOptions] = useState<Room[]>([]);
 
   const [usedId, setUsedId] = useState<number | null>(null);
 
@@ -39,19 +39,15 @@ const useAdminLogic = (
       try {
         if (formType === "talks" && talkOptions.length === 0) {
           const talks = await getTalks();
-          if (Array.isArray(talks)) {
-            setTalkOptions(talks);
-          } else {
-            console.log("Talks data is not an array", talks);
-          }
+            setTalkOptions(talks.items);
         }
         if (formType === "speakers" && speakerOptions.length === 0) {
           const speakers = await getSpeakers();
-          setSpeakerOptions(speakers);
+          setSpeakerOptions(speakers.items);
         }
         if (formType === "rooms" && roomOptions.length === 0) {
           const rooms = await getRooms();
-          setRoomOptions(rooms);
+          setRoomOptions(rooms.items);
         }
       } catch (error) {
         console.log("Could not fetch data", error);
@@ -99,7 +95,6 @@ const useAdminLogic = (
         break;
       default:
         throw new Error("Could not match a form type");
-        break;
     }
   };
   // Adding function to change value of event for different requests
@@ -134,6 +129,7 @@ const useAdminLogic = (
             talkData.startTime,
             talkData.endTime
           );
+          console.log(updatedTalk)
           onTalkUpdated(updatedTalk);
           break;
         case "speakers":

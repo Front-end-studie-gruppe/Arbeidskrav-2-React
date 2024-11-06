@@ -9,16 +9,15 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
     onRoomAdded
   );
   return (
-    <div>
+    <section className={formStyle.siteContainer}>
       <h2></h2>
-      <div>
+      <div className={formStyle.headerBtns}>
         <button onClick={() => setFormType("talks")}>Add talk</button>
         <button onClick={() => setFormType("speakers")}>Add speaker</button>
         <button onClick={() => setFormType("rooms")}>Add room</button>
       </div>
 
-      <form
-        className={formStyle.container}
+      <form className={formStyle.formContainer}
         onSubmit={(e) => {
           e.preventDefault();
           handleAdd();
@@ -26,6 +25,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
       >
         {formType === "talks" && (
           <>
+          <h2>Add new talk</h2>
             <input
               type="text"
               name="title"
@@ -66,6 +66,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
         )}
         {formType === "speakers" && (
           <>
+          <h2>Add new speaker</h2>
             <input
               type="text"
               name="name"
@@ -85,6 +86,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
         )}
         {formType === "rooms" && (
           <>
+          <h2>Add new room</h2>
             <input
               type="text"
               name="name"
@@ -96,7 +98,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
           </>
         )}
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -1,4 +1,10 @@
-import { Speaker, talk, room } from "../types/types";
+import { Speaker, Talk, Room } from "../types/types";
+
+interface ArrayResponse {
+  cursor: string | null;
+  items: [];
+  next_page: string | null;
+}
 
 const addInfo = import.meta.env.VITE_API_KEY_SPEAKER;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -7,7 +13,7 @@ const postHeaders: HeadersInit = {
   Authorization: `Bearer ${addInfo}`,
 };
 
-export const getSpeakers = async (): Promise<Speaker[]> => {
+export const getSpeakers = async (): Promise<ArrayResponse> => {
   const response = await fetch(`${BASE_URL}/speakers`, {
     method: "GET",
     headers: postHeaders,
@@ -20,7 +26,7 @@ export const getSpeakers = async (): Promise<Speaker[]> => {
   return await response.json();
 };
 
-export const getSpeakerDetails = async (id: number): Promise<Speaker> => {
+export const getSpeakerDetails = async (id: number): Promise<ArrayResponse> => {
   const response = await fetch(`${BASE_URL}/speakers${id}`, {
     method: "GET",
     headers: postHeaders,
@@ -30,10 +36,10 @@ export const getSpeakerDetails = async (id: number): Promise<Speaker> => {
     throw new Error("Failed fetching of speakers");
   }
 
-  return await response.json();
+  return response.json();
 };
 
-export const getTalks = async (): Promise<talk[]> => {
+export const getTalks = async (): Promise<ArrayResponse> => {
   const response = await fetch(`${BASE_URL}/talks`, {
     method: "GET",
     headers: postHeaders,
@@ -43,10 +49,10 @@ export const getTalks = async (): Promise<talk[]> => {
     throw new Error("Failed fetching of rooms");
   }
 
-  return await response.json();
+  return response.json();
 };
 
-export const getTalkDetails = async (id: number): Promise<talk> => {
+export const getTalkDetails = async (id: number): Promise<ArrayResponse> => {
   const response = await fetch(`${BASE_URL}/talks${id}`, {
     method: "GET",
     headers: postHeaders,
@@ -56,11 +62,11 @@ export const getTalkDetails = async (id: number): Promise<talk> => {
     throw new Error("Failed fetching of speakers");
   }
 
-  return await response.json();
+  return response.json();
 };
 
-export const getRooms = async (): Promise<room[]> => {
-  const response = await fetch(`${BASE_URL}/speakers`, {
+export const getRooms = async (): Promise<ArrayResponse> => {
+  const response = await fetch(`${BASE_URL}/rooms`, {
     method: "GET",
     headers: postHeaders,
   });
@@ -69,10 +75,10 @@ export const getRooms = async (): Promise<room[]> => {
     throw new Error("Failed fetching of speakers");
   }
 
-  return await response.json();
+  return response.json();
 };
 
-export const getRoomDetails = async (id: number): Promise<room> => {
+export const getRoomDetails = async (id: number): Promise<ArrayResponse> => {
   const response = await fetch(`${BASE_URL}/rooms${id}`, {
     method: "GET",
     headers: postHeaders,
@@ -82,7 +88,7 @@ export const getRoomDetails = async (id: number): Promise<room> => {
     throw new Error("Failed fetching of speakers");
   }
 
-  return await response.json();
+  return response.json();
 };
 
 export const updateSpeaker = async (id: number, name: string, bio: string): Promise<Speaker> => {
@@ -96,7 +102,7 @@ export const updateSpeaker = async (id: number, name: string, bio: string): Prom
   return responseData;
 };
 
-export const updateRoom = async (id: number, name: string): Promise<room> => {
+export const updateRoom = async (id: number, name: string): Promise<Room> => {
   const response = await fetch(`${BASE_URL}/rooms/${id}`, {
     method: "PUT",
     headers: postHeaders,
@@ -112,7 +118,7 @@ export const updateTalk = async (
   roomId: number,
   startTime: string,
   endTime: string
-): Promise<talk> => {
+): Promise<Talk> => {
   const response = await fetch(`${BASE_URL}/talks/${id}`, {
     method: "PUT",
     headers: postHeaders,

@@ -13,13 +13,13 @@ export interface Speaker {
   bio: string;
 }
 
-export interface room {
+export interface Room {
   id: number;
   name: string;
   capacity: string;
 }
 
-export interface talk {
+export interface Talk {
   id: number;
   speakerId: number;
   roomId: number;
@@ -29,13 +29,13 @@ export interface talk {
 }
 
 export interface AdminAddTypes {
-  onTalkAdded: (talk: talk) => void;
+  onTalkAdded: (talk: Talk) => void;
   onSpeakerAdded: (speaker: Speaker) => void;
-  onRoomAdded: (room: room) => void;
+  onRoomAdded: (room: Room) => void;
 }
 
 export interface AdminUpdatetypes {
-  onTalkUpdated: (talk: talk) => void;
+  onTalkUpdated: (talk: Talk) => void;
   onSpeakerUpdated: (speaker: Speaker) => void;
-  onRoomUpdated: (room: room) => void;
+  onRoomUpdated: (room: Room) => void;
 }

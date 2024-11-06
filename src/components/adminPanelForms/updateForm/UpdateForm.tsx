@@ -18,16 +18,16 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
     handleSelectChange,
   } = useAdminLogic(onTalkUpdated, onSpeakerUpdated, onRoomUpdated);
   return (
-    <div>
+    <section className={formStyle.siteContainer}>
       <h2></h2>
-      <div>
-        <button onClick={() => setFormType("talks")}>Add talk</button>
-        <button onClick={() => setFormType("speakers")}>Add speaker</button>
-        <button onClick={() => setFormType("rooms")}>Add room</button>
+      <div className={formStyle.headerBtns}>
+        <button onClick={() => setFormType("talks")}>Edit talk</button>
+        <button onClick={() => setFormType("speakers")}>Edit speaker</button>
+        <button onClick={() => setFormType("rooms")}>Edit room</button>
       </div>
 
       <form
-        className={formStyle.container}
+        className={formStyle.formContainer}
         onSubmit={(e) => {
           e.preventDefault();
           handleUpdate();
@@ -35,6 +35,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
       >
         {formType === "talks" && (
           <>
+          <h2>Hello</h2>
             <select onChange={handleSelectChange}>
               <option value="">Select talk</option>
               {talkOptions.map((talk) => (
@@ -70,7 +71,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
           </>
         )}
       </form>
-    </div>
+    </section>
   );
 };
 

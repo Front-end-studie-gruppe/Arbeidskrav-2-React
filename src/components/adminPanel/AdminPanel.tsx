@@ -1,5 +1,6 @@
 import AddForm from "../adminPanelForms/addForm/AddForm";
 import UpdateForm from "../adminPanelForms/updateForm/UpdateForm";
+import EventSelector from "../dropdown/EventSelector";
 import panelStyle from "./panel.module.css";
 
 const AdminPanel = () => {
@@ -25,11 +26,7 @@ const AdminPanel = () => {
   return (
     <div className={panelStyle.container}>
       <AddForm onTalkAdded={handleAddedTalk} onSpeakerAdded={handleAddedSpeaker} onRoomAdded={handleAddedRoom} />
-      <UpdateForm
-        onTalkUpdated={handleUpdatedTalk}
-        onSpeakerUpdated={handleUpdatedSpeaker}
-        onRoomUpdated={handleUpdatedRoom}
-      />
+      <UpdateForm onRoomUpdated={handleUpdatedRoom} onSpeakerUpdated={handleUpdatedSpeaker} onTalkUpdated={handleUpdatedTalk} />
     </div>
   );
 };
