@@ -11,7 +11,7 @@ export interface room {
 }
 
 export interface talk {
-  id: number;
+  _uuid: string;
   speakerId: number;
   roomId: number;
   title: string;

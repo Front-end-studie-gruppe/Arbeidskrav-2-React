@@ -1,4 +1,4 @@
-import { Speaker } from "../types/types";
+import { Speaker, talk } from "../types/types";
 
 const getInfo = import.meta.env.VITE_API_KEY_SPEAKER;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -23,7 +23,7 @@ export const getSpeakers = async (): Promise<Speaker[]> => {
     return data.items; 
   };
 
-  export const getTalks = async (): Promise<Speaker[]> => {
+  export const getTalks = async (): Promise<talk[]> => {
     const response = await fetch(`${BASE_URL}/talks`, {
       method: "GET",
       headers: getHeaders,

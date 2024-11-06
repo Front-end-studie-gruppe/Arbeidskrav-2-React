@@ -11,9 +11,9 @@ const Speakers = () => {
   useEffect(() => {
     const fetchSpeakers = async () => {
       try {
-        const data = await getSpeakers();
-        console.log("Fetched speakers:", data);
-        setSpeakers(data); 
+        const dataSpeakers = await getSpeakers();
+        console.log("Fetched speakers:", dataSpeakers);
+        setSpeakers(dataSpeakers); 
       } catch (error) {
         console.error("Error fetching speakers:", error);
       }
