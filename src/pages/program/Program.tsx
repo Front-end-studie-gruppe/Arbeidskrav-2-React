@@ -1,8 +1,13 @@
+import Programheader from "../../components/programHeader/Programheader";
 import programStyles from "./Program.module.css";
 
 const Program = () => {
   return (
-    <section className={programStyles.siteContainer}>
+    <>
+    <header>
+      <Programheader />
+    </header>
+     <section className={programStyles.siteContainer}>
       <h1>Our program</h1>
       <div className={programStyles.cardContainer}>
         {/* HERE ADD CARD COMPONENT, UNDER IS DUMMY DATA*/}
@@ -33,6 +38,7 @@ const Program = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
