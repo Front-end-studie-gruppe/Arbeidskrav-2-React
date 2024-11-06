@@ -11,12 +11,14 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
     talkOptions,
     speakerOptions,
     roomOptions,
+    usedId,
 
     handleUpdate,
     setFormType,
     handleInputChange,
     handleSelectChange,
   } = useAdminLogic(onTalkUpdated, onSpeakerUpdated, onRoomUpdated);
+
   return (
     <section className={formStyle.siteContainer}>
       <h2>Administer</h2>
@@ -36,7 +38,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
         {formType === "talks" && (
           <>
           <h2>Update existing talk</h2>
-            <select onChange={handleSelectChange}>
+            <select value={usedId || ""}onChange={handleSelectChange}>
               <option value="">Select talk</option>
               {talkOptions.map((talk) => (
                 <option key={talk.id} value={talk.id}>
@@ -44,6 +46,8 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
                 </option>
               ))}
             </select>
+            {talkData && (
+              <>
             <input
               type="text"
               name="title"
@@ -81,6 +85,8 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
             ></input>
             <button>Update talk</button>
             <button>Delete talk</button>
+            </>
+            )}
           </>
         )}
         {formType === "speakers" && (

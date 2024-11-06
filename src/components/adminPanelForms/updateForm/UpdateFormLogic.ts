@@ -54,15 +54,22 @@ const useAdminLogic = (
       }
     };
     fetchOptions();
-  }, [formType, talkOptions, speakerOptions, roomOptions]);
+  }, [formType]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const id = parseInt(e.target.value);
+    const id = parseInt(e.target.value, 10);
+    if(isNaN(id)) {
+      console.log("Invalid id")
+      return
+    }
     setUsedId(id);
+    console.log("Selected ID: ", id); // Debugging log
 
     switch (formType) {
       case "talks":
-        const selectedTalk = talkOptions.find((talk) => talk.id === id);
+        const selectedTalk = talkOptions.find((talk) => talk.id === usedId);
+        console.log("Talk Options: ", talkOptions);  // Debugging log
+        console.log("Selected Talk: ", selectedTalk);
         if (selectedTalk) {
           setTalkData({
             id: selectedTalk.id,
@@ -72,6 +79,8 @@ const useAdminLogic = (
             startTime: selectedTalk.startTime,
             endTime: selectedTalk.endTime,
           });
+        } else {
+          console.log("Error", selectedTalk)
         }
         break;
       case "speakers":
