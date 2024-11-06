@@ -5,6 +5,7 @@ import { Speaker } from "../../types/speakers.types";
 
 const Speakers = () => {
   const [speakers, setSpeakers] = useState<string[]>([]);  
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSpeakers = async () => {
@@ -16,10 +17,16 @@ const Speakers = () => {
       } catch (error) {
         console.error("Error fetching speakers:", error);
       } 
+      setIsLoading(false);
     };
-
+    
     fetchSpeakers();
   }, []); 
+
+  if (isLoading) {
+    return <div>Loading speakers...</div>;
+  }
+
 
   return (
     <>
