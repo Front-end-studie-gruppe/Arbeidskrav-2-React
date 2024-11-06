@@ -27,8 +27,16 @@ button {
   border-radius: 7px;
   margin-left: 5px;
   cursor: pointer;
+  font-weight: var(--font-medium);
 }
 
-.headerBtns {
+.headerNav button {
   margin-bottom: -1rem;
+  color: var(--color-accent);
+  background-color: var(--color-background);
+}
+
+.headerNav button:focus {
+  background-color: var(--color-accent-focus);
+  color: var(--color-background);
 }

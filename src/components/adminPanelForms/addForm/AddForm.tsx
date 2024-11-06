@@ -11,7 +11,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
   return (
     <section className={formStyle.siteContainer}>
       <h2>Administer</h2>
-      <div className={formStyle.headerBtns}>
+      <div className={formStyle.headerNav}>
         <button onClick={() => setFormType("talks")}>Add talk</button>
         <button onClick={() => setFormType("speakers")}>Add speaker</button>
         <button onClick={() => setFormType("rooms")}>Add room</button>

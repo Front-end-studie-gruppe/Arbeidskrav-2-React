@@ -20,7 +20,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
   return (
     <section className={formStyle.siteContainer}>
       <h2>Administer</h2>
-      <div className={formStyle.headerBtns}>
+      <div className={formStyle.headerNav}>
         <button onClick={() => setFormType("talks")}>Edit talk</button>
         <button onClick={() => setFormType("speakers")}>Edit speaker</button>
         <button onClick={() => setFormType("rooms")}>Edit room</button>
