@@ -1,12 +1,3 @@
-export interface User {
-  id: number;
-  username: string;
-  name: string;
-  role: string;
-  password: string;
-  email: string;
-}
-
 export interface Speaker {
   _uuid: string;
   name: string;
