@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addTalks, addRoom, addSpeaker } from "../../../api/AddRequests";
+import { addTalks, addSpeaker, addRoom } from "../../../api/AddRequests";
 import { Speaker, room, talk } from "../../../types/types";
 
 // Adding useStates for logic

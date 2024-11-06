@@ -12,10 +12,24 @@ const AdminPanel = () => {
   const handleAddedRoom = () => {
     alert("Sucessfully added room");
   };
+
+  const handleUpdatedTalk = () => {
+    alert("Successfully added room");
+  };
+  const handleUpdatedSpeaker = () => {
+    alert("Successfully added speaker");
+  };
+  const handleUpdatedRoom = () => {
+    alert("Sucessfully added room");
+  };
   return (
     <div className={panelStyle.container}>
       <AddForm onTalkAdded={handleAddedTalk} onSpeakerAdded={handleAddedSpeaker} onRoomAdded={handleAddedRoom} />
-      <UpdateForm onTalkAdded={handleAddedTalk} onSpeakerAdded={handleAddedSpeaker} onRoomAdded={handleAddedRoom} />
+      <UpdateForm
+        onTalkUpdated={handleUpdatedTalk}
+        onSpeakerUpdated={handleUpdatedSpeaker}
+        onRoomUpdated={handleUpdatedRoom}
+      />
     </div>
   );
 };

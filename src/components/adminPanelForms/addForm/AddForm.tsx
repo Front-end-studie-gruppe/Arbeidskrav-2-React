@@ -1,8 +1,8 @@
 import useAdminLogic from "./AddFormLogic";
-import { AdminPanelProps } from "../../../types/types";
+import { AdminAddTypes } from "../../../types/types";
 import formStyle from "../Form.module.css";
 
-const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminPanelProps) => {
+const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) => {
   const { formType, setFormType, talkData, speakerData, roomData, handleAdd, handleInputChange } = useAdminLogic(
     onTalkAdded,
     onSpeakerAdded,
