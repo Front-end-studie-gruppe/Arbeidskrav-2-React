@@ -36,8 +36,6 @@ const Speakers = () => {
     }
   };
   
-
-
   const closeModal = () => {
     setSelectedSpeaker(null);
   };
