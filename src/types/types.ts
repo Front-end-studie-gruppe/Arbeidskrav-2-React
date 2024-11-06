@@ -8,7 +8,7 @@ export interface User {
 }
 
 export interface Speaker {
-  id: number;
+  _uuid: string;
   name: string;
   bio: string;
 }
