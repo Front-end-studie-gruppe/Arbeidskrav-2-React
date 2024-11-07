@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+.all {
+  height: 80svh;
+}
+
+.all header {
+  font-family: "Open Sans";
+}
+
+.all header {
+  background: rgba(148, 192, 180, 0.122);
+}
+
+.hTwo {
+  font-size: 3rem;
+  font-family: "Montserrat";
+}
+
+.sectionContent h2 {
+  font-size: 2rem;
+  font-family: "Montserrat";
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.flexCenter {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.flexCenter section {
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  overflow: auto;
+  border-radius: 16px;
+  box-shadow: 0 30px 50px #000000a8;
+  border: 1px solid #00000030;
+}
+
+.contentData{
+  padding-left: 2rem;
+}
+
+.modalSection p {
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.flexCenter h3 {
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-family: "Open Sans";
+  font-size: 1.2rem;
+}
+
+.flexCenter h3:hover {
+  background-color: #0057b3;
+  color: white;
+}
+
+.modalSection h3{
+    font-family: "Open Sans";
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modalSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.modalSection.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sectionContent {
+  display: flex;
+  width: 400px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sectionContent button {
+  margin-left: 2.9rem;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sectionContent button:hover {
+  background-color: #0056b3;
+}
