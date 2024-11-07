@@ -10,6 +10,7 @@ const addInfo = import.meta.env.VITE_API_KEY_SPEAKER;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const postHeaders: HeadersInit = {
+  "Content-type": "application/json",
   Authorization: `Bearer ${addInfo}`,
 };
 
@@ -26,8 +27,8 @@ export const getSpeakers = async (): Promise<ArrayResponse> => {
   return await response.json();
 };
 
-export const getSpeakerDetails = async (id: number): Promise<ArrayResponse> => {
-  const response = await fetch(`${BASE_URL}/speakers/${id}`, {
+export const getSpeakerDetails = async (uuid: string): Promise<ArrayResponse> => {
+  const response = await fetch(`${BASE_URL}/speakers/${uuid}`, {
     method: "GET",
     headers: postHeaders,
   });
@@ -52,8 +53,8 @@ export const getTalks = async (): Promise<ArrayResponse> => {
   return response.json();
 };
 
-export const getTalkDetails = async (id: number): Promise<ArrayResponse> => {
-  const response = await fetch(`${BASE_URL}/talks/${id}`, {
+export const getTalkDetails = async (uuid: string): Promise<ArrayResponse> => {
+  const response = await fetch(`${BASE_URL}/talks/${uuid}`, {
     method: "GET",
     headers: postHeaders,
   });
@@ -78,8 +79,8 @@ export const getRooms = async (): Promise<ArrayResponse> => {
   return response.json();
 };
 
-export const getRoomDetails = async (id: number): Promise<ArrayResponse> => {
-  const response = await fetch(`${BASE_URL}/rooms/${id}`, {
+export const getRoomDetails = async (uuid: string): Promise<ArrayResponse> => {
+  const response = await fetch(`${BASE_URL}/rooms/${uuid}`, {
     method: "GET",
     headers: postHeaders,
   });
@@ -91,8 +92,8 @@ export const getRoomDetails = async (id: number): Promise<ArrayResponse> => {
   return response.json();
 };
 
-export const updateSpeaker = async (id: number, name: string, bio: string): Promise<Speaker> => {
-  const response = await fetch(`${BASE_URL}/speakers/${id}`, {
+export const updateSpeaker = async (uuid: string, name: string, bio: string): Promise<Speaker> => {
+  const response = await fetch(`${BASE_URL}/speakers/${uuid}`, {
     method: "PUT",
     headers: postHeaders,
     body: JSON.stringify([{ name, bio }]),
@@ -102,8 +103,8 @@ export const updateSpeaker = async (id: number, name: string, bio: string): Prom
   return responseData;
 };
 
-export const updateRoom = async (id: number, name: string): Promise<Room> => {
-  const response = await fetch(`${BASE_URL}/rooms/${id}`, {
+export const updateRoom = async (uuid: string, name: string): Promise<Room> => {
+  const response = await fetch(`${BASE_URL}/rooms/${uuid}`, {
     method: "PUT",
     headers: postHeaders,
     body: JSON.stringify([{ name }]),
@@ -112,14 +113,14 @@ export const updateRoom = async (id: number, name: string): Promise<Room> => {
 };
 
 export const updateTalk = async (
-  id: number,
+  uuid: string,
   title: string,
-  speakerId: number,
-  roomId: number,
+  speakerId: string,
+  roomId: string,
   startTime: string,
   endTime: string
 ): Promise<Talk> => {
-  const response = await fetch(`${BASE_URL}/talks/${id}`, {
+  const response = await fetch(`${BASE_URL}/talks/${uuid}`, {
     method: "PUT",
     headers: postHeaders,
     body: JSON.stringify([{ title, speakerId, roomId, startTime, endTime }]),

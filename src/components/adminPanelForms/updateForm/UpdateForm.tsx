@@ -11,7 +11,6 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
     talkOptions,
     speakerOptions,
     roomOptions,
-    usedId,
 
     handleUpdate,
     setFormType,
@@ -37,7 +36,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
       >
         {formType === "talks" && (
           <>
-          <h2>Update existing talk</h2>
+            <h2>Update existing talk</h2>
             <select onChange={handleSelectChange}>
               <option value="">Select talk</option>
               {talkOptions.map((talk) => (
@@ -48,50 +47,50 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
             </select>
             {talkData && (
               <>
-            <input
-              type="text"
-              name="title"
-              placeholder="Talk Title"
-              value={talkData.title}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              type="number"
-              name="speakerId"
-              placeholder="Speaker ID"
-              value={talkData.speakerId}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              type="number"
-              name="roomId"
-              placeholder="Room ID"
-              value={talkData.roomId}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              type="text"
-              name="startTime"
-              placeholder="Start time"
-              value={talkData.startTime}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              type="text"
-              name="endTime"
-              placeholder="End time"
-              value={talkData.endTime}
-              onChange={handleInputChange}
-            ></input>
-            <button>Update talk</button>
-            <button>Delete talk</button>
-            </>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Talk Title"
+                  value={talkData.title}
+                  onChange={handleInputChange}
+                ></input>
+                <input
+                  type="number"
+                  name="speakerId"
+                  placeholder="Speaker ID"
+                  value={talkData.speakerId}
+                  onChange={handleInputChange}
+                ></input>
+                <input
+                  type="number"
+                  name="roomId"
+                  placeholder="Room ID"
+                  value={talkData.roomId}
+                  onChange={handleInputChange}
+                ></input>
+                <input
+                  type="text"
+                  name="startTime"
+                  placeholder="Start time"
+                  value={talkData.startTime}
+                  onChange={handleInputChange}
+                ></input>
+                <input
+                  type="text"
+                  name="endTime"
+                  placeholder="End time"
+                  value={talkData.endTime}
+                  onChange={handleInputChange}
+                ></input>
+                <button>Update talk</button>
+                <button>Delete talk</button>
+              </>
             )}
           </>
         )}
         {formType === "speakers" && (
           <>
-          <h2>Update existing speaker</h2>
+            <h2>Update existing speaker</h2>
             <select onChange={handleSelectChange}>
               <option value="">Select speaker</option>
               {speakerOptions.map((speaker) => (
@@ -120,7 +119,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
         )}
         {formType === "rooms" && (
           <>
-          <h2>Update existing room</h2>
+            <h2>Update existing room</h2>
             <select onChange={handleSelectChange}>
               <option value="">Select room</option>
               {roomOptions.map((room) => (

@@ -1,26 +1,17 @@
-export interface User {
-  id: number;
-  username: string;
-  name: string;
-  role: string;
-  password: string;
-  email: string;
-}
-
 export interface Speaker {
-  id: number;
+  _uuid: string;
   name: string;
   bio: string;
 }
 
-export interface Room {
-  id: number;
+export interface room {
+  _uuid: string;
   name: string;
   capacity: string;
 }
 
-export interface Talk {
-  id: number;
+export interface talk {
+  _uuid: string;
   speakerId: number;
   roomId: number;
   title: string;
