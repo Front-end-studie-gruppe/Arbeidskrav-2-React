@@ -5,13 +5,19 @@ h2 {
 }
 
 .siteContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  width: 400px;
+  height: 450px;
   margin-top: 2rem;
   justify-content: center;
 
@@ -21,17 +27,30 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.formContainer input:focus {
+  border: 3px solid var(--color-border);
+}
+.formContainer input {
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.formContainer select {
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.textArea {
+  height: 100px;
+}
+
 button {
   display: inline-block;
   padding: 4px;
   border-radius: 7px;
-  margin-left: 5px;
+  margin-left: 0.5rem;
   cursor: pointer;
   font-weight: var(--font-medium);
-}
-
-button:hover {
-  background-color: var(--color-accent-hover);
 }
 
 .headerNav button {
@@ -43,9 +62,4 @@ button:hover {
 .headerNav button:focus {
   background-color: var(--color-accent-focus);
   color: var(--color-background);
-}
-
-.headerNav button:hover {
-  background-color: var(--color-accent-hover);
-  color: black;
 }

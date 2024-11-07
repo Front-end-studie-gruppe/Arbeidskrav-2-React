@@ -53,8 +53,6 @@ const UpdateForm = ({
                 </option>
               ))}
             </select>
-            {talkData && (
-              <>
                 <input
                   type="text"
                   name="title"
@@ -98,8 +96,6 @@ const UpdateForm = ({
                 </button>
               </>
             )}
-          </>
-        )}
         {formType === "speakers" && (
           <>
             <h2>Update existing speaker</h2>
@@ -121,6 +117,7 @@ const UpdateForm = ({
             <input
               type="text"
               name="bio"
+              className={formStyle.textArea}
               placeholder="Write about yourself"
               value={speakerData.bio}
               onChange={handleInputChange}
