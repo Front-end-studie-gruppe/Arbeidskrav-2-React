@@ -9,6 +9,7 @@ const useAdminLogic = (
   onTalkUpdated: (talk: talk) => void,
   onSpeakerUpdated: (Speaker: Speaker) => void,
   onRoomUpdated: (room: room) => void,
+
   onTalkDeleted: (talk: talk) => void,
   onRoomDeleted: (room: room) => void,
   onSpeakerDeleted: (speaker: Speaker) => void
@@ -123,8 +124,8 @@ const useAdminLogic = (
           const updatedTalk = await updateTalk(
             talkData._uuid,
             talkData.title,
-            Number(talkData.speakerId),
-            Number(talkData.roomId),
+            talkData.speakerId,
+            talkData.roomId,
             talkData.startTime,
             talkData.endTime
           );
