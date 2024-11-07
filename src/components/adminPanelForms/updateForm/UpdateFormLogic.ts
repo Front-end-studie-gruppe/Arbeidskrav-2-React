@@ -1,37 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Speaker, Room, Talk } from "../../../types/types";
-import {
-  getRooms,
-  getSpeakers,
-  getTalks,
-  updateRoom,
-  updateSpeaker,
-  updateTalk,
-} from "../../../api/UpdateDeleteRequests";
+import { Speaker, room, talk } from "../../../types/types";
+import { updateRoom, updateSpeaker, updateTalk } from "../../../api/UpdateDeleteRequests";
+import { getRooms, getSpeakers, getTalks } from "../../../api/getRequests";
 
 // Adding useStates for logic
 const useAdminLogic = (
-  onTalkUpdated: (talk: Talk) => void,
+  onTalkUpdated: (talk: talk) => void,
   onSpeakerUpdated: (Speaker: Speaker) => void,
-  onRoomUpdated: (room: Room) => void
+  onRoomUpdated: (room: room) => void
 ) => {
   const [formType, setFormType] = useState<"talks" | "speakers" | "rooms">("talks");
   const [talkData, setTalkData] = useState({
-    id: 0,
+    _uuid: "",
     title: "",
     speakerId: 0,
     roomId: 0,
     startTime: "",
     endTime: "",
   });
-  const [speakerData, setSpeakerData] = useState({ id: 0, name: "", bio: "" });
-  const [roomData, setRoomData] = useState({ id: 0, name: "" });
+  const [speakerData, setSpeakerData] = useState({ _uuid: "", name: "", bio: "" });
+  const [roomData, setRoomData] = useState({ _uuid: "", name: "" });
 
-  const [talkOptions, setTalkOptions] = useState<Talk[]>([]);
+  const [talkOptions, setTalkOptions] = useState<talk[]>([]);
   const [speakerOptions, setSpeakerOptions] = useState<Speaker[]>([]);
-  const [roomOptions, setRoomOptions] = useState<Room[]>([]);
-
-  const [usedId, setUsedId] = useState<number | null>(null);
+  const [roomOptions, setRoomOptions] = useState<room[]>([]);
 
   // Fetching data from api and putting them into an array when formType changes
   useEffect(() => {
@@ -39,37 +31,35 @@ const useAdminLogic = (
       try {
         if (formType === "talks" && talkOptions.length === 0) {
           const talks = await getTalks();
-            setTalkOptions(talks.items);
+          setTalkOptions(talks);
         }
         if (formType === "speakers" && speakerOptions.length === 0) {
           const speakers = await getSpeakers();
-          setSpeakerOptions(speakers.items);
+          setSpeakerOptions(speakers);
         }
         if (formType === "rooms" && roomOptions.length === 0) {
           const rooms = await getRooms();
-          setRoomOptions(rooms.items);
+          setRoomOptions(rooms);
         }
       } catch (error) {
         console.log("Could not fetch data", error);
       }
     };
     fetchOptions();
-  }, [formType]);
+  }, [formType, talkOptions, speakerOptions, roomOptions]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const id = parseInt(e.target.value);
-    setUsedId(id);
-
+    const selectedValue = e.target.value;
     switch (formType) {
       case "talks":
-        const selectedTalk = talkOptions.find((talk) => talk.id === id);
+        const selectedTalk = talkOptions.find((talk) => talk._uuid === selectedValue);
         console.log("State of all in array", talkOptions);
-        console.log("State of single data", talkData)
-        console.log(selectedTalk);
-        
+        console.log("State of single data", talkData);
+        console.log(selectedValue);
+
         if (selectedTalk) {
           setTalkData({
-            id: selectedTalk.id,
+            _uuid: selectedTalk._uuid,
             title: selectedTalk.title,
             speakerId: selectedTalk.speakerId,
             roomId: selectedTalk.roomId,
@@ -77,24 +67,24 @@ const useAdminLogic = (
             endTime: selectedTalk.endTime,
           });
         } else {
-          console.log("Error", selectedTalk)
+          console.log("Error", selectedTalk);
         }
         break;
       case "speakers":
-        const selectedSpeaker = speakerOptions.find((speaker) => speaker.id === id);
+        const selectedSpeaker = speakerOptions.find((speaker) => speaker._uuid === selectedValue);
         if (selectedSpeaker) {
           setSpeakerData({
-            id: selectedSpeaker.id,
+            _uuid: selectedSpeaker._uuid,
             name: selectedSpeaker.name,
             bio: selectedSpeaker.bio,
           });
         }
         break;
       case "rooms":
-        const selectedRoom = roomOptions.find((room) => room.id === id);
+        const selectedRoom = roomOptions.find((room) => room._uuid === selectedValue);
         if (selectedRoom) {
           setRoomData({
-            id: selectedRoom.id,
+            _uuid: selectedRoom._uuid,
             name: selectedRoom.name,
           });
         }
@@ -121,29 +111,25 @@ const useAdminLogic = (
 
   const handleUpdate = async () => {
     try {
-      if (usedId === null) {
-        console.log("No item is selected");
-        return;
-      }
       switch (formType) {
         case "talks":
           const updatedTalk = await updateTalk(
-            usedId,
+            talkData._uuid,
             talkData.title,
             talkData.speakerId,
             talkData.roomId,
             talkData.startTime,
             talkData.endTime
           );
-          console.log(updatedTalk)
+          console.log(updatedTalk);
           onTalkUpdated(updatedTalk);
           break;
         case "speakers":
-          const updatedSpeaker = await updateSpeaker(usedId, speakerData.name, speakerData.bio);
+          const updatedSpeaker = await updateSpeaker(speakerData._uuid, speakerData.name, speakerData.bio);
           onSpeakerUpdated(updatedSpeaker);
           break;
         case "rooms":
-          const updatedRoom = await updateRoom(usedId, roomData.name);
+          const updatedRoom = await updateRoom(roomData._uuid, roomData.name);
           onRoomUpdated(updatedRoom);
       }
     } catch (error) {
@@ -158,7 +144,6 @@ const useAdminLogic = (
     talkOptions,
     speakerOptions,
     roomOptions,
-    usedId,
 
     setTalkData,
     setSpeakerData,

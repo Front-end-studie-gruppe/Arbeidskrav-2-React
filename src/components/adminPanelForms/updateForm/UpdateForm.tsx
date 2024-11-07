@@ -40,7 +40,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
             <select onChange={handleSelectChange}>
               <option value="">Select talk</option>
               {talkOptions.map((talk) => (
-                <option key={talk.id} value={talk.id}>
+                <option key={talk._uuid} value={talk._uuid}>
                   {talk.title}
                 </option>
               ))}
@@ -94,7 +94,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
             <select onChange={handleSelectChange}>
               <option value="">Select speaker</option>
               {speakerOptions.map((speaker) => (
-                <option key={speaker.id} value={speaker.id}>
+                <option key={speaker._uuid} value={speaker._uuid}>
                   {speaker.name}
                 </option>
               ))}
@@ -123,7 +123,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
             <select onChange={handleSelectChange}>
               <option value="">Select room</option>
               {roomOptions.map((room) => (
-                <option key={room.id} value={room.id}>
+                <option key={room._uuid} value={room._uuid}>
                   {room.name}
                 </option>
               ))}
