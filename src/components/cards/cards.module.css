@@ -11,14 +11,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   max-width: 20rem;
   min-width: 20rem;
+  max-height: 150px;
+  min-height: 150px;
+  text-align: center;
   gap: 5px;
-  border-style: solid;
   border-radius: 20px;
-  border-color: black;
   padding: 2em;
   background-color: rgb(255, 255, 255);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: var(--box-shadow);
+  border: 2px solid var(--color/border);
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card:active {
+  transform: scale(0.98);
+  box-shadow: none;
 }

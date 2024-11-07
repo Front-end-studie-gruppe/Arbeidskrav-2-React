@@ -40,24 +40,18 @@ const Cards: React.FC = () => {
 
   return (
     <div className={styles.card_container}>
-      {talks.map((talk) => {
-        const speaker = speakers.find((s) => s.id === talk.speakerId);
-        const room = rooms.find((r) => r.id === talk.roomId);
-
-        const startTime = new Date(talk.startTime);
-        const endTime = new Date(talk.endTime);
-        const durationInMinutes = Math.floor(
-          (endTime.getTime() - startTime.getTime()) / (1000 * 60)
-        );
+      {talks.map((talk, index) => {
+        const room = rooms[index];
+        const speaker = speakers[index];
 
         return (
-          <div className={styles.card} key={`${talk.id}-${talk.title}`}>
+          <div className={styles.card} key={talk._uuid}>
             <p className="room">{room?.name || "Room not found"}</p>
             <p className="title">
               <b>{talk.title}</b>
             </p>
+
             <p className="speaker">{speaker?.name || "Speaker not found"}</p>
-            <p className="duration">{`${durationInMinutes} min`}</p>
           </div>
         );
       })}
