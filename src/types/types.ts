@@ -19,8 +19,14 @@ export interface talk {
   endTime: string;
 }
 
-export interface AdminPanelProps {
-  onTalkAdded: (talk: talk) => void;
+export interface AdminAddTypes {
+  onTalkAdded: (talk: Talk) => void;
   onSpeakerAdded: (speaker: Speaker) => void;
-  onRoomAdded: (room: room) => void;
+  onRoomAdded: (room: Room) => void;
+}
+
+export interface AdminUpdatetypes {
+  onTalkUpdated: (talk: Talk) => void;
+  onSpeakerUpdated: (speaker: Speaker) => void;
+  onRoomUpdated: (room: Room) => void;
 }

@@ -1,24 +1,23 @@
 import useAdminLogic from "./AddFormLogic";
-import { AdminPanelProps } from "../../../types/types";
+import { AdminAddTypes } from "../../../types/types";
 import formStyle from "../Form.module.css";
 
-const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminPanelProps) => {
+const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) => {
   const { formType, setFormType, talkData, speakerData, roomData, handleAdd, handleInputChange } = useAdminLogic(
     onTalkAdded,
     onSpeakerAdded,
     onRoomAdded
   );
   return (
-    <div>
-      <h2></h2>
-      <div>
+    <section className={formStyle.siteContainer}>
+      <h2>Administer</h2>
+      <div className={formStyle.headerNav}>
         <button onClick={() => setFormType("talks")}>Add talk</button>
         <button onClick={() => setFormType("speakers")}>Add speaker</button>
         <button onClick={() => setFormType("rooms")}>Add room</button>
       </div>
 
-      <form
-        className={formStyle.container}
+      <form className={formStyle.formContainer}
         onSubmit={(e) => {
           e.preventDefault();
           handleAdd();
@@ -26,6 +25,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminPanelProps) 
       >
         {formType === "talks" && (
           <>
+          <h2>Add new talk</h2>
             <input
               type="text"
               name="title"
@@ -66,6 +66,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminPanelProps) 
         )}
         {formType === "speakers" && (
           <>
+          <h2>Add new speaker</h2>
             <input
               type="text"
               name="name"
@@ -85,6 +86,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminPanelProps) 
         )}
         {formType === "rooms" && (
           <>
+          <h2>Add new room</h2>
             <input
               type="text"
               name="name"
@@ -96,7 +98,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminPanelProps) 
           </>
         )}
       </form>
-    </div>
+    </section>
   );
 };
 
