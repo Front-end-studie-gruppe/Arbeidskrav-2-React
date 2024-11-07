@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Speaker, room, talk } from "../../../types/types";
-import { updateRoom, updateSpeaker, updateTalk } from "../../../api/UpdateDeleteRequests";
+import { updateRoom, updateSpeaker, updateTalk } from "../../../api/UpdateRequests";
 import { getRooms, getSpeakers, getTalks } from "../../../api/getRequests";
+import { deleteRoom, deleteSpeaker, deleteTalk } from "../../../api/deleteRequests";
 
 // Adding useStates for logic
 const useAdminLogic = (
   onTalkUpdated: (talk: talk) => void,
   onSpeakerUpdated: (Speaker: Speaker) => void,
-  onRoomUpdated: (room: room) => void
+  onRoomUpdated: (room: room) => void,
+  onTalkDeleted: (talk: talk) => void,
+  onRoomDeleted: (room: room) => void,
+  onSpeakerDeleted: (speaker: Speaker) => void
 ) => {
   const [formType, setFormType] = useState<"talks" | "speakers" | "rooms">("talks");
   const [talkData, setTalkData] = useState({
@@ -137,6 +141,49 @@ const useAdminLogic = (
       console.log("Error adding", error);
     }
   };
+
+  const handleDelete = async () => {
+    try {
+      switch (formType) {
+        case "talks":
+          if (!talkData._uuid) return;
+
+          await deleteTalk(talkData._uuid);
+          setTalkData({
+            _uuid: "",
+            title: "",
+            speakerId: 0,
+            roomId: 0,
+            startTime: "",
+            endTime: "",
+          });
+          break;
+        case "speakers":
+          if (!speakerData._uuid) return;
+
+          await deleteSpeaker(speakerData._uuid);
+
+          setSpeakerOptions((prevOptions) => prevOptions.filter((speaker) => speaker._uuid !== speakerData._uuid));
+
+          setSpeakerData({ _uuid: "", name: "", bio: "" });
+          break;
+        case "rooms":
+          if (!roomData._uuid) return;
+
+          await deleteRoom(roomData._uuid);
+
+          setRoomOptions((prevOptions) => prevOptions.filter((room) => room._uuid !== roomData._uuid));
+
+          setRoomData({ _uuid: "", name: "" });
+          break;
+        default:
+          throw new Error("Something wrong with form types");
+      }
+    } catch (error) {
+      console.log("Something wrong with deleting selected value");
+    }
+  };
+
   return {
     formType,
     talkData,
@@ -150,6 +197,7 @@ const useAdminLogic = (
     setSpeakerData,
     setRoomData,
     handleUpdate,
+    handleDelete,
     handleSelectChange,
     handleInputChange,
     setFormType,

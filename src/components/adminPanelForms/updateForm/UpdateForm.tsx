@@ -1,8 +1,15 @@
 import useAdminLogic from "./UpdateFormLogic";
-import { AdminUpdatetypes } from "../../../types/types";
+import { AdminUpdateDeleteTypes } from "../../../types/types";
 import formStyle from "../Form.module.css";
 
-const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpdatetypes) => {
+const UpdateForm = ({
+  onTalkUpdated,
+  onSpeakerUpdated,
+  onRoomUpdated,
+  onTalkDeleted,
+  onRoomDeleted,
+  onSpeakerDeleted,
+}: AdminUpdateDeleteTypes) => {
   const {
     formType,
     talkData,
@@ -13,10 +20,11 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
     roomOptions,
 
     handleUpdate,
+    handleDelete,
     setFormType,
     handleInputChange,
     handleSelectChange,
-  } = useAdminLogic(onTalkUpdated, onSpeakerUpdated, onRoomUpdated);
+  } = useAdminLogic(onTalkUpdated, onSpeakerUpdated, onRoomUpdated, onTalkDeleted, onRoomDeleted, onSpeakerDeleted);
 
   return (
     <section className={formStyle.siteContainer}>
@@ -84,8 +92,10 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
                   value={talkData.endTime}
                   onChange={handleInputChange}
                 ></input>
-                <button>Update talk</button>
-                <button>Delete talk</button>
+                <button type="submit">Update talk</button>
+                <button type="button" onClick={handleDelete}>
+                  Delete talk
+                </button>
               </>
             )}
           </>
@@ -115,8 +125,10 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
               value={speakerData.bio}
               onChange={handleInputChange}
             ></input>
-            <button>Update speaker</button>
-            <button>Delete speaker</button>
+            <button type="submit">Update speaker</button>
+            <button type="button" onClick={handleDelete}>
+              Delete speaker
+            </button>
           </>
         )}
         {formType === "rooms" && (
@@ -137,8 +149,10 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
               value={roomData.name}
               onChange={handleInputChange}
             ></input>
-            <button>Update speaker</button>
-            <button>Delete speaker</button>
+            <button type="submit">Update Rooms</button>
+            <button type="button" onClick={handleDelete}>
+              Delete room
+            </button>
           </>
         )}
       </form>

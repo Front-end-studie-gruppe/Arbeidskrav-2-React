@@ -25,8 +25,12 @@ export interface AdminAddTypes {
   onRoomAdded: (room: room) => void;
 }
 
-export interface AdminUpdatetypes {
+export interface AdminUpdateDeleteTypes {
   onTalkUpdated: (talk: talk) => void;
   onSpeakerUpdated: (speaker: Speaker) => void;
   onRoomUpdated: (room: room) => void;
+
+  onTalkDeleted: (talk: talk) => void;
+  onSpeakerDeleted: (speaker: Speaker) => void;
+  onRoomDeleted: (room: room) => void;
 }
