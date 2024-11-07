@@ -2,10 +2,12 @@
   /* Coloring (bgColor, color etc) */
   --color-background: white;
   --color-text: black;
-  --color-accent: rgb(133, 59, 133);
+  --color-accent: rgb(116, 53, 116);
   --color-border: rgb(134, 25, 134);
   --programNavA-color: #333;
   --programNavA-Hovercolor: #007bff;
+  --color-accent-focus: rgba(133, 59, 133, 0.9);
+  --color-accent-hover: rgba(225, 123, 225,0.6);
 
   /* Font sizing */
   --font-size-base: 16px;
@@ -14,6 +16,7 @@
 
    /* Font weight: ; */
    --bold-font: bold;
+   --font-medium: 600;
 
   /* Spacing (padding, margin etc) */
   --space-small: 0.5rem;
@@ -25,7 +28,7 @@
   --border-width: 1px;
 
   /* Box-shadow */
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 4px 8px rgba(134, 25, 134, 0.6);
 }
 
 * {

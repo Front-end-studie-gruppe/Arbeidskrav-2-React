@@ -1,26 +1,17 @@
-export interface User {
-  id: number;
-  username: string;
-  name: string;
-  role: string;
-  password: string;
-  email: string;
-}
-
 export interface Speaker {
-  id: number;
+  _uuid: string;
   name: string;
   bio: string;
 }
 
 export interface room {
-  id: number;
+  _uuid: string;
   name: string;
   capacity: string;
 }
 
 export interface talk {
-  id: number;
+  _uuid: string;
   speakerId: number;
   roomId: number;
   title: string;
@@ -28,8 +19,14 @@ export interface talk {
   endTime: string;
 }
 
-export interface AdminPanelProps {
-  onTalkAdded: (talk: talk) => void;
+export interface AdminAddTypes {
+  onTalkAdded: (talk: Talk) => void;
   onSpeakerAdded: (speaker: Speaker) => void;
-  onRoomAdded: (room: room) => void;
+  onRoomAdded: (room: Room) => void;
+}
+
+export interface AdminUpdatetypes {
+  onTalkUpdated: (talk: Talk) => void;
+  onSpeakerUpdated: (speaker: Speaker) => void;
+  onRoomUpdated: (room: Room) => void;
 }

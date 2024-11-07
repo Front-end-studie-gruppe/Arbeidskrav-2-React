@@ -14,7 +14,9 @@ export const addSpeaker = async (name: string, bio: string): Promise<Speaker> =>
     headers: postHeaders,
     body: JSON.stringify([{ name, bio }]),
   });
-  return await response.json();
+  const responseData = await response.json();
+  console.log(responseData);
+  return responseData;
 };
 
 export const addRoom = async (name: string): Promise<room> => {

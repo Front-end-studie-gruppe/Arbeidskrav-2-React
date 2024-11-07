@@ -9,9 +9,9 @@ import reduxStore from "./redux/reduxStore.ts";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={reduxStore}>
-    <Router>
-      <App />
-    </Router>
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </StrictMode>
 );
