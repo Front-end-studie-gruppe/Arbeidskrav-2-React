@@ -127,14 +127,23 @@ const useAdminLogic = (
             talkData.startTime,
             talkData.endTime
           );
+          setTalkOptions((prevOptions) =>
+            prevOptions.map((talk) => (talk._uuid === updatedTalk._uuid ? updatedTalk : talk))
+          );
           onTalkUpdated(updatedTalk);
           break;
         case "speakers":
           const updatedSpeaker = await updateSpeaker(speakerData._uuid, speakerData.name, speakerData.bio);
+          setSpeakerOptions((prevOptions) =>
+            prevOptions.map((speaker) => (speaker._uuid === updatedSpeaker._uuid ? updatedSpeaker : speaker))
+          );
           onSpeakerUpdated(updatedSpeaker);
           break;
         case "rooms":
           const updatedRoom = await updateRoom(roomData._uuid, roomData.name);
+          setRoomOptions((prevOptions) =>
+            prevOptions.map((room) => (room._uuid === updatedRoom._uuid ? updatedRoom : room))
+          );
           onRoomUpdated(updatedRoom);
       }
     } catch (error) {
@@ -146,8 +155,6 @@ const useAdminLogic = (
     try {
       switch (formType) {
         case "talks":
-          if (!talkData._uuid) return;
-
           await deleteTalk(talkData._uuid);
           setTalkData({
             _uuid: "",
@@ -159,8 +166,6 @@ const useAdminLogic = (
           });
           break;
         case "speakers":
-          if (!speakerData._uuid) return;
-
           await deleteSpeaker(speakerData._uuid);
 
           setSpeakerOptions((prevOptions) => prevOptions.filter((speaker) => speaker._uuid !== speakerData._uuid));
@@ -168,8 +173,6 @@ const useAdminLogic = (
           setSpeakerData({ _uuid: "", name: "", bio: "" });
           break;
         case "rooms":
-          if (!roomData._uuid) return;
-
           await deleteRoom(roomData._uuid);
 
           setRoomOptions((prevOptions) => prevOptions.filter((room) => room._uuid !== roomData._uuid));
