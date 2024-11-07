@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 1rem 0.5rem;
+  margin-bottom: var(--space-large);
+
+  background-color: var(--color-accent);
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-large);
+}
+
+.navList {
+  list-style-type: none;
+  display: flex;
+  gap: 5rem;
+}
+
+.listElement a {
+  color: var(--color-background);
+}
+
+.listElement a:hover {
+  text-decoration: none;
+}
