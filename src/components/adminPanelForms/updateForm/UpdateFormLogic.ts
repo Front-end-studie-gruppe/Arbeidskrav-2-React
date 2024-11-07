@@ -23,7 +23,7 @@ const useAdminLogic = (
     endTime: "",
   });
   const [speakerData, setSpeakerData] = useState({ _uuid: "", name: "", bio: "" });
-  const [roomData, setRoomData] = useState({ _uuid: "", name: "" });
+  const [roomData, setRoomData] = useState({ _uuid: "", name: "", capacity: "" });
 
   const [talkOptions, setTalkOptions] = useState<talk[]>([]);
   const [speakerOptions, setSpeakerOptions] = useState<Speaker[]>([]);
@@ -92,6 +92,7 @@ const useAdminLogic = (
           setRoomData({
             _uuid: selectedRoom._uuid,
             name: selectedRoom.name,
+            capacity: selectedRoom.capacity,
           });
         }
         break;
@@ -164,6 +165,7 @@ const useAdminLogic = (
             startTime: "",
             endTime: "",
           });
+          onTalkDeleted(talkData);
           break;
         case "speakers":
           await deleteSpeaker(speakerData._uuid);
@@ -171,13 +173,15 @@ const useAdminLogic = (
           setSpeakerOptions((prevOptions) => prevOptions.filter((speaker) => speaker._uuid !== speakerData._uuid));
 
           setSpeakerData({ _uuid: "", name: "", bio: "" });
+          onSpeakerDeleted(speakerData);
           break;
         case "rooms":
           await deleteRoom(roomData._uuid);
 
           setRoomOptions((prevOptions) => prevOptions.filter((room) => room._uuid !== roomData._uuid));
 
-          setRoomData({ _uuid: "", name: "" });
+          setRoomData({ _uuid: "", name: "", capacity: "" });
+          onRoomDeleted(roomData);
           break;
         default:
           throw new Error("Something wrong with form types");

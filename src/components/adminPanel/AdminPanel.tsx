@@ -14,22 +14,22 @@ const AdminPanel = () => {
   };
 
   const handleUpdatedTalk = () => {
-    alert("Successfully added room");
+    alert("Successfully updated talk");
   };
   const handleUpdatedSpeaker = () => {
-    alert("Successfully added speaker");
+    alert("Successfully updated speaker");
   };
   const handleUpdatedRoom = () => {
-    alert("Sucessfully added room");
+    alert("Sucessfully updated room");
   };
   const handleDeletedTalk = () => {
-    alert("Successfully added room");
+    alert("Successfully deleted talk");
   };
   const handleDeletedSpeaker = () => {
-    alert("Successfully added speaker");
+    alert("Successfully deleted speaker");
   };
   const handleDeletedRoom = () => {
-    alert("Sucessfully added room");
+    alert("Sucessfully deleted room");
   };
   return (
     <div className={panelStyle.container}>
