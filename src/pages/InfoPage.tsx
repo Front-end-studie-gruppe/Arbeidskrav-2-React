@@ -1,42 +1,71 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-interface Talk {
-  id: string;
-  title: string;
-  description: string;
-  speaker: string;
-}
+import { Talk, Speaker, Room } from "./types";
 
 const InfoPage: React.FC = () => {
   const { talkId } = useParams<{ talkId: string }>();
   const [talk, setTalk] = useState<Talk | null>(null);
-  const [showMore, setShowMore] = useState<boolean>(false);
+  const [speaker, setSpeaker] = useState<Speaker | null>(null);
+  const [room, setRoom] = useState<Room | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    fetch(`${apiUrl}/talks/${talkId}`)
-      .then((response) => response.json())
-      .then((data) => setTalk(data))
-      .catch((error) => console.error("Error fetching talk details:", error));
+    const fetchTalkInfo = async () => {
+      try {
+        setLoading(true);
+
+        const talkResponse = await fetch(
+          `https://crudcrud.com/api/your-api-key/talks/${talkId}`
+        );
+        const talkData = await talkResponse.json();
+        setTalk(talkData);
+
+        const speakerResponse = await fetch(
+          `https://crudcrud.com/api/your-api-key/speakers/${talkData.speakerId}`
+        );
+        const speakerData = await speakerResponse.json();
+        setSpeaker(speakerData);
+
+        const roomResponse = await fetch(
+          `https://crudcrud.com/api/your-api-key/rooms/${talkData.roomId}`
+        );
+        const roomData = await roomResponse.json();
+        setRoom(roomData);
+      } catch (err) {
+        setError("Error fetching talk details");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTalkInfo();
   }, [talkId]);
 
-  if (!talk) {
-    return <p>Loading...</p>;
-  }
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h1>{talk.title}</h1>
-      <p>Speaker: {talk.speaker}</p>
+    <div className="talk-info">
+      <h2>{talk?.title}</h2>
       <p>
-        {showMore
-          ? talk.description
-          : `${talk.description.substring(0, 100)}...`}
+        <strong>Speaker:</strong> {speaker?.name || "Speaker not found"}
       </p>
-      <button onClick={() => setShowMore(!showMore)}>
-        {showMore ? "Show less" : "Show more"}
-      </button>
+      <p>
+        <strong>Room:</strong> {room?.name || "Room not found"}
+      </p>
+      <p>
+        <strong>Start Time:</strong>{" "}
+        {new Date(talk?.startTime || "").toLocaleTimeString()}
+      </p>
+      <p>
+        <strong>End Time:</strong>{" "}
+        {new Date(talk?.endTime || "").toLocaleTimeString()}
+      </p>
+      <p>
+        <strong>Description:</strong>{" "}
+        {talk?.description || "No description available"}
+      </p>
     </div>
   );
 };
