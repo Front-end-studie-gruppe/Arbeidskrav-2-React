@@ -73,7 +73,7 @@ const Header = () => {
               {username ? (
                 <>
                   <p className={headerStyle.userName} onClick={toggleDropdown}>
-                    {username}
+                    {username} :click here
                   </p>
                   {isDropdownOpen && (
                     <div ref={dropdownRef} className={headerStyle.dropdown}>
