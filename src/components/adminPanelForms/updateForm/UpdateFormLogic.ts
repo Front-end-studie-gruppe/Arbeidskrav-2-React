@@ -50,24 +50,26 @@ const useAdminLogic = (
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = e.target.value;
+    const selectedName = e.target.name;
     switch (formType) {
       case "talks":
-        const selectedTalk = talkOptions.find((talk) => talk._uuid === selectedValue);
-        console.log("State of all in array", talkOptions);
-        console.log("State of single data", talkData);
-        console.log(selectedValue);
+        if (selectedName === "talk") {
+          const selectedTalk = talkOptions.find((talk) => talk._uuid === selectedValue);
 
-        if (selectedTalk) {
-          setTalkData({
-            _uuid: selectedTalk._uuid,
-            title: selectedTalk.title,
-            speakerId: selectedTalk.speakerId,
-            roomId: selectedTalk.roomId,
-            startTime: selectedTalk.startTime,
-            endTime: selectedTalk.endTime,
-          });
-        } else {
-          console.log("Error", selectedTalk);
+          if (selectedTalk) {
+            setTalkData({
+              _uuid: selectedTalk._uuid,
+              title: selectedTalk.title,
+              speakerId: selectedTalk.speakerId,
+              roomId: selectedTalk.roomId,
+              startTime: selectedTalk.startTime,
+              endTime: selectedTalk.endTime,
+            });
+          }
+        } else if (selectedName === "speakerId") {
+          setTalkData((prev) => ({ ...prev, speakerId: Number(selectedValue) }));
+        } else if (selectedName === "roomId") {
+          setTalkData((prev) => ({ ...prev, roomId: Number(selectedValue) }));
         }
         break;
       case "speakers":
@@ -116,12 +118,11 @@ const useAdminLogic = (
           const updatedTalk = await updateTalk(
             talkData._uuid,
             talkData.title,
-            talkData.speakerId,
-            talkData.roomId,
+            Number(talkData.speakerId),
+            Number(talkData.roomId),
             talkData.startTime,
             talkData.endTime
           );
-          console.log(updatedTalk);
           onTalkUpdated(updatedTalk);
           break;
         case "speakers":

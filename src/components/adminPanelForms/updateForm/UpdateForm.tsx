@@ -37,7 +37,7 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
         {formType === "talks" && (
           <>
             <h2>Update existing talk</h2>
-            <select onChange={handleSelectChange}>
+            <select name="talk" onChange={handleSelectChange}>
               <option value="">Select talk</option>
               {talkOptions.map((talk) => (
                 <option key={talk._uuid} value={talk._uuid}>
@@ -54,20 +54,22 @@ const UpdateForm = ({ onTalkUpdated, onSpeakerUpdated, onRoomUpdated }: AdminUpd
                   value={talkData.title}
                   onChange={handleInputChange}
                 ></input>
-                <input
-                  type="number"
-                  name="speakerId"
-                  placeholder="Speaker ID"
-                  value={talkData.speakerId}
-                  onChange={handleInputChange}
-                ></input>
-                <input
-                  type="number"
-                  name="roomId"
-                  placeholder="Room ID"
-                  value={talkData.roomId}
-                  onChange={handleInputChange}
-                ></input>
+                <select name="speakerId" value={talkData.speakerId} onChange={handleSelectChange}>
+                  <option value="">Select speaker</option>
+                  {talkOptions.map((talk) => (
+                    <option key={talk.speakerId} value={talk.speakerId}>
+                      {talk.speakerId}
+                    </option>
+                  ))}
+                </select>
+                <select name="roomId" value={talkData.roomId} onChange={handleSelectChange}>
+                  <option value="">Select speaker</option>
+                  {talkOptions.map((talk) => (
+                    <option key={talk.roomId} value={talk.roomId}>
+                      {talk.roomId}
+                    </option>
+                  ))}
+                </select>
                 <input
                   type="text"
                   name="startTime"

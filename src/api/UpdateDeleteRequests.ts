@@ -39,8 +39,9 @@ export const updateTalk = async (
   const response = await fetch(`${BASE_URL}/talks/${_uuid}`, {
     method: "PUT",
     headers: postHeaders,
-    body: JSON.stringify([{ title, speakerId, roomId, startTime, endTime }]),
+    body: JSON.stringify({ title, speakerId, roomId, startTime, endTime }),
   });
+  console.log("Wrong with request");
   if (!response) {
     console.log("Something wrong with response for body data");
   }

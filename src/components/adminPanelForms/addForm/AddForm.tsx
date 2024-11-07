@@ -3,11 +3,17 @@ import { AdminAddTypes } from "../../../types/types";
 import formStyle from "../Form.module.css";
 
 const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) => {
-  const { formType, setFormType, talkData, speakerData, roomData, handleAdd, handleInputChange } = useAdminLogic(
-    onTalkAdded,
-    onSpeakerAdded,
-    onRoomAdded
-  );
+  const {
+    formType,
+    setFormType,
+    talkData,
+    speakerData,
+    roomData,
+    talkOptions,
+    handleAdd,
+    handleInputChange,
+    handleSelectChange,
+  } = useAdminLogic(onTalkAdded, onSpeakerAdded, onRoomAdded);
   return (
     <section className={formStyle.siteContainer}>
       <h2>Administer</h2>
@@ -17,7 +23,8 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
         <button onClick={() => setFormType("rooms")}>Add room</button>
       </div>
 
-      <form className={formStyle.formContainer}
+      <form
+        className={formStyle.formContainer}
         onSubmit={(e) => {
           e.preventDefault();
           handleAdd();
@@ -25,7 +32,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
       >
         {formType === "talks" && (
           <>
-          <h2>Add new talk</h2>
+            <h2>Add new talk</h2>
             <input
               type="text"
               name="title"
@@ -33,20 +40,22 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
               value={talkData.title}
               onChange={handleInputChange}
             ></input>
-            <input
-              type="number"
-              name="speakerId"
-              placeholder="Speaker ID"
-              value={talkData.speakerId}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              type="number"
-              name="roomId"
-              placeholder="Room ID"
-              value={talkData.roomId}
-              onChange={handleInputChange}
-            ></input>
+            <select name="speakerId" value={talkData.speakerId} onChange={handleSelectChange}>
+              <option value="">Select speaker</option>
+              {talkOptions.map((speaker) => (
+                <option key={speaker.speakerId} value={speaker.speakerId}>
+                  {speaker.speakerId}
+                </option>
+              ))}
+            </select>
+            <select name="roomId" value={talkData.roomId} onChange={handleSelectChange}>
+              <option value="">Select room</option>
+              {talkOptions.map((room) => (
+                <option key={room.roomId} value={room.roomId}>
+                  {room.roomId}
+                </option>
+              ))}
+            </select>
             <input
               type="text"
               name="startTime"
@@ -66,7 +75,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
         )}
         {formType === "speakers" && (
           <>
-          <h2>Add new speaker</h2>
+            <h2>Add new speaker</h2>
             <input
               type="text"
               name="name"
@@ -86,7 +95,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
         )}
         {formType === "rooms" && (
           <>
-          <h2>Add new room</h2>
+            <h2>Add new room</h2>
             <input
               type="text"
               name="name"

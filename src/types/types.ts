@@ -20,13 +20,13 @@ export interface talk {
 }
 
 export interface AdminAddTypes {
-  onTalkAdded: (talk: Talk) => void;
+  onTalkAdded: (talk: talk) => void;
   onSpeakerAdded: (speaker: Speaker) => void;
-  onRoomAdded: (room: Room) => void;
+  onRoomAdded: (room: room) => void;
 }
 
 export interface AdminUpdatetypes {
-  onTalkUpdated: (talk: Talk) => void;
+  onTalkUpdated: (talk: talk) => void;
   onSpeakerUpdated: (speaker: Speaker) => void;
-  onRoomUpdated: (room: Room) => void;
+  onRoomUpdated: (room: room) => void;
 }

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addTalks, addSpeaker, addRoom } from "../../../api/AddRequests";
 import { Speaker, room, talk } from "../../../types/types";
+import { getTalks } from "../../../api/getRequests";
 
 // Adding useStates for logic
 const useAdminLogic = (
@@ -19,6 +20,20 @@ const useAdminLogic = (
   const [speakerData, setSpeakerData] = useState({ name: "", bio: "" });
   const [roomData, setRoomData] = useState({ name: "" });
 
+  const [talkOptions, setTalkOptions] = useState<talk[]>([]);
+
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const selectList = await getTalks();
+        setTalkOptions(selectList);
+      } catch (error) {
+        throw new Error("Something went wrong with fetching");
+      }
+    };
+    fetchList();
+  }, []);
+
   // Adding function to change value of event for different requests
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,6 +47,17 @@ const useAdminLogic = (
       case "rooms":
         setRoomData((prev) => ({ ...prev, [name]: value }));
         break;
+    }
+  };
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    const selectedName = e.target.name;
+
+    if (selectedName === "speakerId") {
+      setTalkData((prev) => ({ ...prev, speakerId: Number(selectedValue) }));
+    } else if (selectedName === "roomId") {
+      setTalkData((prev) => ({ ...prev, roomId: Number(selectedValue) }));
     }
   };
 
@@ -76,6 +102,8 @@ const useAdminLogic = (
     talkData,
     speakerData,
     roomData,
+    talkOptions,
+    handleSelectChange,
 
     handleAdd,
     handleInputChange,
