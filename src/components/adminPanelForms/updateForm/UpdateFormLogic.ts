@@ -86,6 +86,7 @@ const useAdminLogic = (
             bio: selectedSpeaker.bio,
           });
         }
+        console.log(roomOptions);
         break;
       case "rooms":
         const selectedRoom = roomOptions.find((room) => room._uuid === selectedValue);

@@ -10,6 +10,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
     speakerData,
     roomData,
     talkOptions,
+
     handleAdd,
     handleInputChange,
     handleSelectChange,
@@ -43,7 +44,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
             <select name="speakerId" value={talkData.speakerId} onChange={handleSelectChange}>
               <option value="">Select speaker</option>
               {talkOptions.map((speaker) => (
-                <option key={speaker.speakerId} value={speaker.speakerId}>
+                <option key={speaker._uuid} value={speaker.speakerId}>
                   {speaker.speakerId}
                 </option>
               ))}
@@ -51,7 +52,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
             <select name="roomId" value={talkData.roomId} onChange={handleSelectChange}>
               <option value="">Select room</option>
               {talkOptions.map((room) => (
-                <option key={room.roomId} value={room.roomId}>
+                <option key={room._uuid} value={room.roomId}>
                   {room.roomId}
                 </option>
               ))}
@@ -86,6 +87,7 @@ const AddForm = ({ onTalkAdded, onSpeakerAdded, onRoomAdded }: AdminAddTypes) =>
             <input
               type="text"
               name="bio"
+              className={formStyle.textArea}
               placeholder="Write about yourself"
               value={speakerData.bio}
               onChange={handleInputChange}

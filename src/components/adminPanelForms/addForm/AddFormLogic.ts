@@ -25,8 +25,8 @@ const useAdminLogic = (
   useEffect(() => {
     const fetchList = async () => {
       try {
-        const selectList = await getTalks();
-        setTalkOptions(selectList);
+        const talkList = await getTalks();
+        setTalkOptions(talkList);
       } catch (error) {
         throw new Error("Something went wrong with fetching");
       }
