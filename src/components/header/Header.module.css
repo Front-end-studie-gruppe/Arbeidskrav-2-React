@@ -28,7 +28,7 @@
   text-decoration: none;
 }
 
-.dropdown{
+.dropdown {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,7 +39,7 @@
   margin-top: 10px;
 }
 
-.dropdown p{
+.dropdown p {
   color: black;
   background-color: white;
   text-align: center;
@@ -50,17 +50,23 @@
   margin-bottom: 1rem;
 }
 
-.dropdown p:hover{
-background-color: #000000;
-color: white;
+.dropdown p:hover {
+  background-color: #000000;
+  color: white;
 }
 
-.userName{
+.userName {
   cursor: pointer;
-   color: white;
-   text-align: center;
+  color: white;
+  text-align: center;
 }
 
-.userName:hover{
+.userName:hover {
   border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 578px) {
+  .navList {
+    gap: 2rem;
+  }
 }

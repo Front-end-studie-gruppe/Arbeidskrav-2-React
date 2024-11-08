@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Contact.css";
+import contactStyle from "./Contact.module.css";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -21,8 +21,8 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="contact-page">
-      <div className="contact-info">
+    <div className={contactStyle.contactPage}>
+      <div className={contactStyle.contactInfo}>
         <h2>Contact Information</h2>
         <p>Address: Storgata 1, Oslo</p>
         <p>Phone: +47 40506070</p>
@@ -31,9 +31,9 @@ const Contact: React.FC = () => {
         </p>
       </div>
       {submitted ? (
-        <p className="thank-you">Thank you for reaching out! We'll get back to you soon.</p>
+        <p className={contactStyle.thankYou}>Thank you for reaching out! We'll get back to you soon.</p>
       ) : (
-        <form onSubmit={handleSubmit} className="contact-form">
+        <form onSubmit={handleSubmit} className={contactStyle.contactForm}>
           <label>
             Name:
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
