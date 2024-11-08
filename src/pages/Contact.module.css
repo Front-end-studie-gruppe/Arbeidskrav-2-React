@@ -1,38 +1,38 @@
-.contact-page {
-  background-color: #f3f4f6; 
+.contactPage {
+  background-color: #f3f4f6;
   padding: 3rem;
-  min-height: 100vh; 
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.contact-info {
+.contactInfo {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.contact-info h2 {
+.contactInfo h2 {
   color: #333;
   margin-bottom: 0.5rem;
 }
 
-.contact-info p {
+.contactInfo p {
   color: #666;
   font-size: 1rem;
   margin: 0.5rem 0;
 }
 
-.contact-info a {
+.contactInfo a {
   color: #007bff;
   text-decoration: none;
 }
 
-.contact-info a:hover {
+.contactInfo a:hover {
   text-decoration: underline;
 }
 
-.contact-form {
+.contactForm {
   background-color: #ffffff; /* Hvit bakgrunn for skjemaet */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -44,14 +44,14 @@
   gap: 1rem;
 }
 
-.contact-form label {
+.contactForm label {
   font-weight: bold;
   color: #333;
   margin-bottom: 0.5rem;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contactForm input,
+.contactForm textarea {
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -60,11 +60,11 @@
   resize: vertical; /* Tillater vertikal endring av størrelse for textarea */
 }
 
-.contact-form textarea {
-  height: 120px; 
+.contactForm textarea {
+  height: 120px;
 }
 
-.contact-form button {
+.contactForm button {
   padding: 0.75rem;
   font-size: 1rem;
   font-weight: bold;
@@ -76,11 +76,11 @@
   transition: background-color 0.3s;
 }
 
-.contact-form button:hover {
+.contactForm button:hover {
   background-color: #0056b3;
 }
 
-.thank-you {
+.thankYou {
   font-size: 1.2rem;
   color: #4caf50;
   text-align: center;

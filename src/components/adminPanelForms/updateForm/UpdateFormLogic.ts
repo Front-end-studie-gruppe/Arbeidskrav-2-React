@@ -71,10 +71,6 @@ const useAdminLogic = (
               endTime: selectedTalk.endTime,
             });
           }
-        } else if (selectedName === "speakerId") {
-          setTalkData((prev) => ({ ...prev, speakerId: Number(selectedValue) }));
-        } else if (selectedName === "roomId") {
-          setTalkData((prev) => ({ ...prev, roomId: Number(selectedValue) }));
         }
         break;
       case "speakers":
@@ -86,6 +82,7 @@ const useAdminLogic = (
             bio: selectedSpeaker.bio,
           });
         }
+        console.log(roomOptions);
         break;
       case "rooms":
         const selectedRoom = roomOptions.find((room) => room._uuid === selectedValue);
@@ -158,6 +155,7 @@ const useAdminLogic = (
       switch (formType) {
         case "talks":
           await deleteTalk(talkData._uuid);
+          setTalkOptions((prevOptions) => prevOptions.filter((talk) => talk._uuid !== talkData._uuid));
           setTalkData({
             _uuid: "",
             title: "",

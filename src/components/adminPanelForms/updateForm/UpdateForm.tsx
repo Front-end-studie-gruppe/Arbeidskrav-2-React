@@ -53,51 +53,49 @@ const UpdateForm = ({
                 </option>
               ))}
             </select>
-            {talkData && (
-              <>
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Talk Title"
-                  value={talkData.title}
-                  onChange={handleInputChange}
-                ></input>
-                <select name="speakerId" value={talkData.speakerId} onChange={handleSelectChange}>
-                  <option value="">Select speaker</option>
-                  {talkOptions.map((talk) => (
-                    <option key={talk.speakerId} value={talk.speakerId}>
-                      {talk.speakerId}
-                    </option>
-                  ))}
-                </select>
-                <select name="roomId" value={talkData.roomId} onChange={handleSelectChange}>
-                  <option value="">Select speaker</option>
-                  {talkOptions.map((talk) => (
-                    <option key={talk.roomId} value={talk.roomId}>
-                      {talk.roomId}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="text"
-                  name="startTime"
-                  placeholder="Start time"
-                  value={talkData.startTime}
-                  onChange={handleInputChange}
-                ></input>
-                <input
-                  type="text"
-                  name="endTime"
-                  placeholder="End time"
-                  value={talkData.endTime}
-                  onChange={handleInputChange}
-                ></input>
-                <button type="submit">Update talk</button>
-                <button type="button" onClick={handleDelete}>
-                  Delete talk
-                </button>
-              </>
-            )}
+            <input
+              type="text"
+              name="title"
+              placeholder="Talk Title"
+              value={talkData.title}
+              onChange={handleInputChange}
+            ></input>
+            <select name="speakerId" value={talkData.speakerId} onChange={handleSelectChange}>
+              <option value="">Select speaker</option>
+              {talkOptions.map((talk) => (
+                <option key={talk.speakerId} value={talk.speakerId}>
+                  {talk.speakerId}
+                </option>
+              ))}
+            </select>
+            <select name="roomId" value={talkData.roomId} onChange={handleSelectChange}>
+              <option value="">Select speaker</option>
+              {talkOptions.map((talk) => (
+                <option key={talk.roomId} value={talk.roomId}>
+                  {talk.roomId}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              name="startTime"
+              placeholder="Start time"
+              value={talkData.startTime}
+              onChange={handleInputChange}
+            ></input>
+            <input
+              type="text"
+              name="endTime"
+              placeholder="End time"
+              value={talkData.endTime}
+              onChange={handleInputChange}
+            ></input>
+            <div className={formStyle.actionBtnContainer}>
+              <button type="submit">Update talk</button>
+              <button type="button" onClick={handleDelete}>
+                Delete talk
+              </button>
+            </div>
           </>
         )}
         {formType === "speakers" && (
@@ -121,14 +119,17 @@ const UpdateForm = ({
             <input
               type="text"
               name="bio"
+              className={formStyle.textArea}
               placeholder="Write about yourself"
               value={speakerData.bio}
               onChange={handleInputChange}
             ></input>
-            <button type="submit">Update speaker</button>
-            <button type="button" onClick={handleDelete}>
-              Delete speaker
-            </button>
+            <div className={formStyle.actionBtnContainer}>
+              <button type="submit">Update speaker</button>
+              <button type="button" onClick={handleDelete}>
+                Delete speaker
+              </button>
+            </div>
           </>
         )}
         {formType === "rooms" && (
@@ -149,10 +150,12 @@ const UpdateForm = ({
               value={roomData.name}
               onChange={handleInputChange}
             ></input>
-            <button type="submit">Update Rooms</button>
-            <button type="button" onClick={handleDelete}>
-              Delete room
-            </button>
+            <div className={formStyle.actionBtnContainer}>
+              <button type="submit">Update Rooms</button>
+              <button type="button" onClick={handleDelete}>
+                Delete room
+              </button>
+            </div>
           </>
         )}
       </form>

@@ -5,3 +5,7 @@
   align-items: center;
   gap: 5rem;
 }
+
+.container h1 span {
+  color: var(--color-accent);
+}

@@ -10,8 +10,8 @@
   --programNavA-color: #333;
   --programNavA-Hovercolor: #007bff;
   --color-accent-focus: rgba(133, 59, 133, 0.9);
-  --color-accent-hover: rgba(225, 123, 225,0.6);
-  --authModal-background:#f0f0f0d8;
+  --color-accent-hover: rgba(234, 195, 234, 0.6);
+  --authModal-background: #f0f0f0d8;
 
   /* Heigt og width: ; */
   --content-info: 80svh;
@@ -25,11 +25,11 @@
   --font-size-base: 16px;
   --font-size-small: 0.85rem;
   --font-size-large: 1.25rem;
-  --font-size-xl: 2.2rem;
-  
-   /* Font weight: ; */
-   --bold-font: bold;
-   --font-medium: 600;
+  --font-size-xl: 2.25rem
+
+  /* Font weight: ; */
+  --bold-font: bold;
+  --font-medium: 600;
 
   /* Spacing (padding, margin etc) */
   --space-small: 0.5rem;

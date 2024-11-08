@@ -5,32 +5,68 @@ h2 {
 }
 
 .siteContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  width: 400px;
+  height: 450px;
   margin-top: 2rem;
   justify-content: center;
 
-  border: 2px solid var(--color-border);
+  border: 3px solid var(--color-border);
   box-shadow: var(--box-shadow);
   padding: 2rem;
   margin-bottom: 2rem;
+}
+
+.formContainer input:focus {
+  border: 3px solid var(--color-border);
+}
+.formContainer input {
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.formContainer select {
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.textArea {
+  height: 100px;
 }
 
 button {
   display: inline-block;
   padding: 4px;
   border-radius: 7px;
-  margin-left: 5px;
+  margin-left: 0.5rem;
   cursor: pointer;
   font-weight: var(--font-medium);
 }
 
-button:hover {
+.actionBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
+}
+
+.actionBtnContainer button {
+  padding: 0.4rem;
+  width: 50%;
+}
+
+.actionBtnContainer button:hover {
   background-color: var(--color-accent-hover);
 }
 
@@ -45,7 +81,8 @@ button:hover {
   color: var(--color-background);
 }
 
-.headerNav button:hover {
-  background-color: var(--color-accent-hover);
-  color: black;
+@media screen and (max-width: 920px) {
+  .container {
+    flex-direction: row;
+  }
 }
