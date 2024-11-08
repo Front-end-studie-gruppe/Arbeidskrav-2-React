@@ -30,6 +30,10 @@ button {
   font-weight: var(--font-medium);
 }
 
+button:hover {
+  background-color: var(--color-accent-hover);
+}
+
 .headerNav button {
   margin-bottom: -1rem;
   color: var(--color-accent);
@@ -39,4 +43,9 @@ button {
 .headerNav button:focus {
   background-color: var(--color-accent-focus);
   color: var(--color-background);
+}
+
+.headerNav button:hover {
+  background-color: var(--color-accent-hover);
+  color: black;
 }

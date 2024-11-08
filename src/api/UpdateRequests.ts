@@ -12,7 +12,7 @@ export const updateSpeaker = async (_uuid: string, name: string, bio: string): P
   const response = await fetch(`${BASE_URL}/speakers/${_uuid}`, {
     method: "PUT",
     headers: postHeaders,
-    body: JSON.stringify([{ name, bio }]),
+    body: JSON.stringify({ name, bio }),
   });
   const responseData = await response.json();
   console.log(responseData);
@@ -23,7 +23,7 @@ export const updateRoom = async (_uuid: string, name: string): Promise<room> => 
   const response = await fetch(`${BASE_URL}/rooms/${_uuid}`, {
     method: "PUT",
     headers: postHeaders,
-    body: JSON.stringify([{ name }]),
+    body: JSON.stringify({ name }),
   });
   return await response.json();
 };
@@ -39,8 +39,9 @@ export const updateTalk = async (
   const response = await fetch(`${BASE_URL}/talks/${_uuid}`, {
     method: "PUT",
     headers: postHeaders,
-    body: JSON.stringify([{ title, speakerId, roomId, startTime, endTime }]),
+    body: JSON.stringify({ title, speakerId, roomId, startTime, endTime }),
   });
+  console.log("Wrong with request");
   if (!response) {
     console.log("Something wrong with response for body data");
   }

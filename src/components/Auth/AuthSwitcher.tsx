@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { registerAdmin, loginAdmin, checkAdminExists } from "../../api/AuthApi";
+import { registerAdmin, loginAdmin, checkAdminExists } from "../../api/authApi";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
-import modalStyle from "./AuthSwitcher.module.css";
+import authStyle from "./AuthSwitcher.module.css";
 import cookie from "js-cookie";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
@@ -52,22 +52,22 @@ const AuthSwitcher = ({ onClose }: AuthSwitcherProps): JSX.Element => {
   };
 
   return (
-    <div className={modalStyle.modalContainer}>
-      <div className={modalStyle.modalContent}>
-        <h2>{isAuthMode ? "Login" : "Register"}</h2>
+    <div className={authStyle.modalContainer}>
+      <div className={authStyle.modalContent}>
+        <h2 className={authStyle.heroAuthText}>{isAuthMode ? "Sign in" : "Sign up"}</h2>
         {!isAuthMode && adminExists && <p>An admin account already exists.</p>}
         {isAuthMode ? (
           <LoginForm onLogin={handleLogin} /> 
         ) : (
-          <RegisterForm onRegister={handleRegister} /> 
+          !adminExists &&  <RegisterForm onRegister={handleRegister} /> 
         )}
-        <p>
-          {isAuthMode ? "Don't have an account?" : "Already registered?"}{" "}
-          <button type="button" onClick={() => setIsAuthMode(!isAuthMode)}>
-            {isAuthMode ? "Go to Registration" : "Go to Log In"} 
+          {isAuthMode ? "Don't have an account?" : ""}{" "}
+          <div className={authStyle.switchButton}>
+          <button className={authStyle.switchBtn} type="button" onClick={() => setIsAuthMode(!isAuthMode)}>
+            {isAuthMode ? "Sign up" : "Sign In"} 
           </button>
-        </p>
-        <button className={modalStyle.close} onClick={onClose}>Close</button> 
+        <button className={authStyle.close} onClick={onClose}>Close</button> 
+          </div>
       </div>
     </div>
   );

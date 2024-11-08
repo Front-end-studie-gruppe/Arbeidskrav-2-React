@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/javazone-logo.jpg";
 import headerStyle from "./Header.module.css";
 import globalStyle from "../../index.module.css";
-import AuthSwitcher from "../auth/AuthSwitcher";
+import AuthSwitcher from "../Auth/AuthSwitcher";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reduxStore";
 import { logout } from "../../redux/authSlice";
@@ -72,13 +72,13 @@ const Header = () => {
             <li className={headerStyle.listElement}>
               {username ? (
                 <>
-                  <p onClick={toggleDropdown} style={{ cursor: "pointer" }}>
-                    {username}
+                  <p className={headerStyle.userName} onClick={toggleDropdown}>
+                    {username} :click here
                   </p>
                   {isDropdownOpen && (
                     <div ref={dropdownRef} className={headerStyle.dropdown}>
                       <Link to="/mypage" onClick={() => setDropdownOpen(false)}>
-                        My Page
+                       <p>My Page</p>
                       </Link>
                       <button onClick={handleLogout}>Log out</button>
                     </div>
@@ -86,7 +86,7 @@ const Header = () => {
                 </>
               ) : (
                 <Link to="#" onClick={toggleModal}>
-                  My Account
+                  <p>My Account</p>
                 </Link>
               )}
             </li>
