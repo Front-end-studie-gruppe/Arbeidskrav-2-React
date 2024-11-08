@@ -8,6 +8,7 @@
 
 .homeContainer {
   margin-top: 20px;
+  margin-bottom: 4rem;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -23,7 +24,6 @@
   margin: 0 auto;
   height: 600px;
   object-fit: cover;
-  object-position: ;
 }
 
 .description {
