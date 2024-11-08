@@ -2,6 +2,8 @@ import Programheader from "../../components/programHeader/Programheader"
 import { getTalkDetails, getTalks } from "../../api/getRequests"
 import { useEffect, useState } from "react";
 import { talk } from "../../types/types"
+import stylethis from "../../style/globalStyle.module.css"
+
 
 const Talks = () => {
   const [talks, setTalks] = useState<talk[]>([]);
@@ -43,14 +45,13 @@ const Talks = () => {
   };
 
   return (
-    <>
+    <div className={stylethis.all}>
       <header>
         <Programheader />
       </header>
-      <div>
-        <h2>Talks</h2>
-      </div>
-      <section>
+        <h2 className={stylethis.hTwo}>Talks</h2>
+     <div className={stylethis.flexCenter}>
+     <section>
         {talks.length === 0 ? (
           <p>There are no talks available</p>
         ) : (
@@ -66,12 +67,15 @@ const Talks = () => {
           </ul>
         )}
       </section>
+     </div>
 
       {selectedTalk && (
-        <section>
-          <div>
+        <section
+        className={`${stylethis.modalSection} ${selectedTalk ? stylethis.show : ""}`}
+        >
+          <div className={stylethis.sectionContent}>
+            <div className={stylethis.contentData}>
             <h2>Talk Details</h2>
-            <div>
               <h3>{selectedTalk.title}</h3>
               <p>Speaker: {selectedTalk.speakerId}</p>
               <p>Room: {selectedTalk.roomId}</p>
@@ -81,12 +85,12 @@ const Talks = () => {
             </div>
             <button
               onClick={closeModal}>
-              Close
+             <p> C <br /> L <br /> O <br /> S <br /> E</p>
             </button>
           </div>
         </section>
        )}
-       </>
+       </div>
      );
    };
 

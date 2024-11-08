@@ -1,3 +1,6 @@
+import authStyle from "./AuthSwitcher.module.css";
+
+
 import { useState } from "react";
 
 interface RegisterFormProps {
@@ -14,16 +17,12 @@ const RegisterForm = ({ onRegister }: RegisterFormProps): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
+    <form style={authStyle} onSubmit={handleSubmit}>
+      <label>Username</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-      </label>
-      <label>
-        Password:
+      <label>Password</label>
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </label>
-      <button type="submit">Register</button>
+      <button className={authStyle.submit} type="submit">Register</button>
     </form>
   );
 };

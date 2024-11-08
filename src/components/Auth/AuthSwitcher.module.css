@@ -11,14 +11,51 @@
 }
 
 .modalContent {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px; 
-    box-shadow: 0 2px 10px #00000080;
+    background: var( --authModal-background);
+    padding: var(--space-medium);
+    border-radius: var(--space-small);
+    width: var(--space-xl); 
+    height: var(--space-xxl);
+    box-shadow: 0 10px 30px #000000;
 }
-
-  .close {
-    margin-top: 10px;
-  }
   
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  label{
+    font-size: var(--font-size-large);
+    font-weight: bold;
+   padding: 1rem 0 0.5rem 0;
+  }
+
+  input{
+    padding: var(--space-small);
+  }
+
+
+
+  .submit{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-size: 1rem;
+  }
+
+  .switchButton{
+    display: flex;
+    justify-content: center;
+    gap: 2.9rem;
+  }
+
+  .switchButton button{
+    margin: 0.5rem 0 0.5rem 0;
+    padding: .4rem 1rem;
+  }
+
+  .heroAuthText{
+    text-align: center;
+    font-size: var( --font-size-xl);
+  }

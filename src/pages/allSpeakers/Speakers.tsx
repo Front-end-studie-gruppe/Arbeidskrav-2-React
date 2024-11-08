@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getSpeakerDetails, getSpeakers } from "../../api/getRequests";
 import Programheader from "../../components/programHeader/Programheader";
 import { Speaker } from "../../types/types";
+import stylethis from "../../style/globalStyle.module.css"
 
 const Speakers = () => {
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
@@ -41,14 +42,13 @@ const Speakers = () => {
   };
 
   return (
-    <>
+    <div className={stylethis.all}>
       <header>
         <Programheader />
       </header>
-      <div>
-        <h2>Speakers</h2>
-      </div>
-      <section>
+        <h2 className={stylethis.hTwo}>Speakers</h2>
+   <div className={stylethis.flexCenter}>
+   <section>
         {speakers.length === 0 ? (
           <p>There are no speakers available</p>
         ) : (
@@ -65,23 +65,26 @@ const Speakers = () => {
           </ul>
         )}
       </section>
+   </div>
 
-      {selectedSpeaker && (
-        <section>
-          <div>
-            <h2>Speaker Details</h2>
-            <div>
+   {selectedSpeaker && (
+        <section
+          className={`${stylethis.modalSection} ${selectedSpeaker ? stylethis.show : ""}`}
+  >
+          <div className={stylethis.sectionContent}>
+          <div className={stylethis.contentData}>
+          <h2>Speaker Details</h2>
               <h3>{selectedSpeaker.name}</h3>
-              <p>Bio: {selectedSpeaker.bio}</p>
-            </div>
-            <button
-              onClick={closeModal}>
-              Close
-            </button>
+              <p>Bio: <br />{selectedSpeaker.bio}</p>
+              </div>
+            <button 
+            onClick={closeModal}>
+              <p>C <br /> L <br /> O <br /> S <br /> E</p>
+              </button>
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 };
 
