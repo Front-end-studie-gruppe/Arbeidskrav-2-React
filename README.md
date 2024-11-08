@@ -5,7 +5,7 @@ Når de velger et kort og klikker på det, blir de tatt til detaljsiden for det 
 /api/talks/
 , og /api/rooms/
 
-Admin:
+AdminPanel:
 Admin har et eget panel med alle rettigheter, inkludert muligheten til å legge til, oppdatere eller slette data. Det kan bare registreres én administrator.
 Når en administrator registreres. Når siden lastes, sendes en GET-forespørsel til https://crudapi.co.uk/ der administratorbrukeren er opprettet.
 
@@ -23,6 +23,9 @@ Når de velger et kort og klikker på det, blir de tatt til detaljsiden for det 
 /api/speakers/,
 /api/talks/,
 /api/rooms/
+
+Detaljesiden:
+Når du velger et kort kommer du over til detaljeside som henter all informasjon relatert til det valgte kortet.
 
 All speakers:
 Henter alle foredragsholdere og legger disse i en liste. Elementene i denne listen skal være mulig å trykke på for å navigere seg til mer informasjon om den valgte.
