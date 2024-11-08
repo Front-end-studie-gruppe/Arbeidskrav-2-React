@@ -1,72 +1,69 @@
-@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
 .all {
-  height: 80svh;
+  height: var(--content-info);
 }
 
 .all header {
-  font-family: "Open Sans";
+  font-family: var(--open-sans);
 }
 
 .all header {
-  background: rgba(148, 192, 180, 0.122);
+  background: hwb(164 58% 25% / 0.122);
 }
 
 .hTwo {
   font-size: 3rem;
-  font-family: "Montserrat";
+  font-family: var(--montserat);
 }
 
 .sectionContent h2 {
   font-size: 2rem;
-  font-family: "Montserrat";
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  font-family: var(--montserat);
+  margin-top: var(--space-small);
+  margin-bottom: var(--space-medium);
 }
 
 .flexCenter {
-  padding-top: 30px;
+  padding-top: var(--space-small);
   display: flex;
   justify-content: center;
 }
 
 .flexCenter section {
   width: 400px;
-  height: 400px;
+  height: 100px;
   text-align: center;
   overflow: auto;
-  border-radius: 16px;
-  box-shadow: 0 30px 50px #000000a8;
-  border: 1px solid #00000030;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: var(--border-width) solid #00000030;
 }
 
-.contentData{
+.contentData {
   padding-left: 2rem;
 }
 
 .modalSection p {
-  padding-top: 1rem;
-  font-size: 1.2rem;
+  padding-top: var(--space-small);
+  font-size: var(--font-size-small);
 }
 
 .flexCenter h3 {
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: var(--space-small);
   font-family: "Open Sans";
-  font-size: 1.2rem;
+  font-size: var(--font-size-small);
 }
 
 .flexCenter h3:hover {
-  background-color: #0057b3;
+  background-color: var(--color-accent);
   color: white;
 }
 
-.modalSection h3{
-    font-family: "Open Sans";
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
+.modalSection h3 {
+  font-family: "Open Sans";
+  font-size: var(--font-size-large);
+  text-align: center;
+  margin-bottom: var(--space-medium);
 }
 
 .modalSection {
@@ -93,21 +90,21 @@
   display: flex;
   width: 400px;
   height: 500px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 .sectionContent button {
-  margin-left: 2.9rem;
-  padding: 8px 16px;
-  background-color: #007bff;
+  margin-left: var(--space-medium);
+  padding: var(--space-small) var(--space-medium);
+  background-color: var(--color-accent);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
 .sectionContent button:hover {
-  background-color: #0056b3;
+  background-color: var(--color-accent-hover);
 }
