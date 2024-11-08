@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Talk, Speaker, Room } from "./types";
+import { talk, Speaker, room } from "../../types/types";
 import styles from "./cards.module.css";
 import { getSpeakers, getTalks, getRooms } from "../../api/getRequests";
+import { useNavigate } from "react-router-dom";
 
 const Cards: React.FC = () => {
-  const [talks, setTalks] = useState<Talk[]>([]);
+  const [talks, setTalks] = useState<talk[]>([]);
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
-  const [rooms, setRooms] = useState<Room[]>([]);
+  const [rooms, setRooms] = useState<room[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +40,10 @@ const Cards: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  const handleCardClick = (talkId: string) => {
+    navigate(`/cards/${talkId}`);
+  };
+
   return (
     <div className={styles.card_container}>
       {talks.map((talk, index) => {
@@ -45,7 +51,11 @@ const Cards: React.FC = () => {
         const speaker = speakers[index];
 
         return (
-          <div className={styles.card} key={talk._uuid}>
+          <div
+            className={styles.card}
+            key={talk._uuid}
+            onClick={() => handleCardClick(talk._uuid)}
+          >
             <p className="room">{room?.name || "Room not found"}</p>
             <p className="title">
               <b>{talk.title}</b>
