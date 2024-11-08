@@ -30,7 +30,7 @@
 
 .flexCenter section {
   width: 400px;
-  height: 100px;
+  height: 400px;
   text-align: center;
   overflow: auto;
   border-radius: var(--border-radius);
