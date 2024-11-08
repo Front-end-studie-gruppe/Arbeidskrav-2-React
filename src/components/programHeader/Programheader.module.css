@@ -1,0 +1,27 @@
+.nav {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+    padding: var(--space-small); 
+    margin-bottom: var(--space-large);
+  }
+  
+  .nav ul {
+    list-style-type: none; 
+    display: flex; 
+  }
+  
+  .nav li {
+    margin: var(--space-small); 
+  }
+  
+  .nav a {
+    text-decoration: none; 
+    color: var(--programNavA-color);
+    font-weight: var(--bold-font); 
+  }
+  
+  .nav a:hover {
+    color: var( --programNavA-Hovercolor);
+  }
+  

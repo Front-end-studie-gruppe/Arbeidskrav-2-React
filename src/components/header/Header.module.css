@@ -1,0 +1,72 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 1rem 0.5rem;
+
+  background-color: var(--color-accent);
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-large);
+}
+
+.navList {
+  list-style-type: none;
+  display: flex;
+  gap: 5rem;
+}
+
+.listElement a {
+  color: var(--color-background);
+}
+
+.listElement a:hover {
+  text-decoration: none;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.441);
+  width: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.dropdown p {
+  color: black;
+  background-color: white;
+  text-align: center;
+  padding: 1px 2px 2px 1px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.dropdown p:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.userName {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+
+.userName:hover {
+  border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 578px) {
+  .navList {
+    gap: 2rem;
+  }
+}

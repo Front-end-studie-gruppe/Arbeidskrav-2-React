@@ -1,0 +1,31 @@
+.containerOfAll {
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  margin-top: 20px;
+}
+
+.homeContainer {
+  margin-top: 20px;
+  margin-bottom: 4rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 3rem;
+}
+
+.headerImage {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  height: 600px;
+  object-fit: cover;
+}
+
+.description {
+  width: 40vw;
+}

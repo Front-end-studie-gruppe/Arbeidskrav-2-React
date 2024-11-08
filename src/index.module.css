@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Matemasie&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+:root {
+  /* Coloring (bgColor, color etc) */
+  --color-background: white;
+  --color-text: black;
+  --color-accent: rgb(116, 53, 116);
+  --color-border: rgb(134, 25, 134);
+  --programNavA-color: #333;
+  --programNavA-Hovercolor: #007bff;
+  --color-accent-focus: rgba(133, 59, 133, 0.9);
+  --color-accent-hover: rgba(234, 195, 234, 0.6);
+  --authModal-background: #f0f0f0d8;
+
+  /* Heigt og width: ; */
+  --content-info: 80svh;
+
+  /* fonts */
+
+  --open-sans: "Open Sans";
+  --montserat: "Montserrat";
+
+  /* Font sizing */
+  --font-size-base: 16px;
+  --font-size-small: 0.85rem;
+  --font-size-large: 1.25rem;
+  --font-size-xl: 2.25rem
+
+  /* Font weight: ; */
+  --bold-font: bold;
+  --font-medium: 600;
+
+  /* Spacing (padding, margin etc) */
+  --space-small: 0.5rem;
+  --space-medium: 1rem;
+  --space-large: 2rem;
+  --space-xl: 18rem;
+  --space-xxl: 25rem;
+
+  /* Borders (padding, margin etc) */
+  --border-radius: 5px;
+  --border-width: 1px;
+
+  /* Box-shadow */
+  --box-shadow: 0 4px 8px rgba(134, 25, 134, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.logo {
+  height: 70px;
+  width: 70px;
+  border-radius: 1rem;
+}
