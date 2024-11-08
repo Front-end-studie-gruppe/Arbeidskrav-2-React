@@ -21,7 +21,7 @@ h2 {
   margin-top: 2rem;
   justify-content: center;
 
-  border: 2px solid var(--color-border);
+  border: 3px solid var(--color-border);
   box-shadow: var(--box-shadow);
   padding: 2rem;
   margin-bottom: 2rem;
@@ -53,6 +53,23 @@ button {
   font-weight: var(--font-medium);
 }
 
+.actionBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
+}
+
+.actionBtnContainer button {
+  padding: 0.5rem;
+  width: 50%;
+}
+
+.actionBtnContainer button:hover {
+  background-color: var(--color-accent-hover);
+}
+
 .headerNav button {
   margin-bottom: -1rem;
   color: var(--color-accent);
@@ -62,4 +79,10 @@ button {
 .headerNav button:focus {
   background-color: var(--color-accent-focus);
   color: var(--color-background);
+}
+
+@media screen and (max-width: 920px) {
+  .container {
+    flex-direction: row;
+  }
 }

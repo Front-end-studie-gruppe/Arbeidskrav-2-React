@@ -32,7 +32,7 @@ const AdminPanel = () => {
     alert("Sucessfully deleted room");
   };
   return (
-    <div className={panelStyle.container}>
+    <section className={panelStyle.container}>
       <AddForm onTalkAdded={handleAddedTalk} onSpeakerAdded={handleAddedSpeaker} onRoomAdded={handleAddedRoom} />
       <UpdateForm
         onRoomUpdated={handleUpdatedRoom}
@@ -42,7 +42,7 @@ const AdminPanel = () => {
         onSpeakerDeleted={handleDeletedSpeaker}
         onRoomDeleted={handleDeletedRoom}
       />
-    </div>
+    </section>
   );
 };
 
