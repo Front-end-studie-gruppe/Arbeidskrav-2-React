@@ -7,6 +7,7 @@ import Home from "../pages/homePage/Home";
 import Speakers from "../pages/allSpeakers/Speakers";
 import Talks from "../pages/allTalks/Talks";
 import Rooms from "../pages/allRooms/Rooms";
+import CardsDetails from "../pages/cardsDetails/CardsDetails";
 
 const AppRoutes = () => {
   return (
@@ -17,17 +18,17 @@ const AppRoutes = () => {
       <Route path="/speakers" element={<Speakers />} />
       <Route path="/talks" element={<Talks />} />
       <Route path="/rooms" element={<Rooms />} />
-      <Route 
-        path="/mypage" 
+      <Route path="/details" element={<CardsDetails />} /> {/* Update here */}
+      <Route
+        path="/mypage"
         element={
           <AdminRigthsSecure>
             <MyPage />
           </AdminRigthsSecure>
-        } 
+        }
       />
     </Routes>
   );
 };
 
 export default AppRoutes;
-
